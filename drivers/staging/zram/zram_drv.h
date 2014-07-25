@@ -122,3 +122,4 @@ spinlock_t slot_free_lock;
 
 struct zram_stats stats;
 };
+#endif
