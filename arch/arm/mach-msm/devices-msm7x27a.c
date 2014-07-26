@@ -899,10 +899,6 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 		/* LGE_CHANGE_S [peter.jung@lge.com]
 		    DoU Power consumption */
 		{
-			.gpu_freq = 380000000,
-			.bus_freq = 245760000,
-		},
-		{
 			.gpu_freq = 355760000,
 			.bus_freq = 213760000,
 		},
