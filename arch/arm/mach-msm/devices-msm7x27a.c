@@ -220,7 +220,7 @@ struct platform_device msm_device_dmov = {
 };
 
 static struct acpuclk_pdata msm7x27a_acpuclk_pdata = {
-	.max_speed_delta_khz = 400000,
+	.max_speed_delta_khz = 450000,
 };
 
 struct platform_device msm7x27a_device_acpuclk = {
@@ -899,10 +899,17 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 		/* LGE_CHANGE_S [peter.jung@lge.com]
 		    DoU Power consumption */
 		{
+			.gpu_freq = 380000000,
+			.bus_freq = 245760000,
+		},
+		{
+			.gpu_freq = 355760000,
+			.bus_freq = 213760000,
+		},
+		{
 			.gpu_freq = 320000000,
 			.bus_freq = 200000000,
 		},
-		/* LGE_CHANGE_E [peter.jung@lge.com] */
 		{
 			.gpu_freq = 245760000,
 			.bus_freq = 200000000,

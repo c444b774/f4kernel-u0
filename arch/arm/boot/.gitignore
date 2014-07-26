@@ -3,4 +3,7 @@ zImage
 xipImage
 bootpImage
 uImage
+boot.img
+f4.zip
+boot.img-ramdisk.gz
 *.dtb
