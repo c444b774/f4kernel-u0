@@ -93,7 +93,7 @@ config RD_LZO
 +config RD_LZ4
 	bool "Support initial ramdisks compressed using LZ4" if EXPERT
 	default !EXPERT
-	epends on BLK_DEV_INITRD
+	depends on BLK_DEV_INITRD
 	select DECOMPRESS_LZ4
 	help
 	  Support loading of a LZ4 encoded initial ramdisk or cpio buffer
