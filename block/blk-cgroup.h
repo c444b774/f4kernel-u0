@@ -362,3 +362,4 @@ static inline void blkiocg_update_io_remove_stats(struct blkio_group *blkg,
 						bool direction, bool sync) {}
 #endif
 #endif /* _BLK_CGROUP_H */
+
