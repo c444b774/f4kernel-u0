@@ -1,0 +1,7 @@
+ui_print("----- F4KERNEL ----");
+ui_print("      LG-P705      ");
+ui_print("-------------------");
+ui_print("");
+ui_print("Installing F4Kernel on your P705...");
+package_extract_file("boot.img", "/dev/block/mmcblk0p9");
+ui_print("Install finished! Reboot your device, please);
