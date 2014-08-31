@@ -16,3 +16,4 @@ static inline int irq_canonicalize(int irq)
 }
 
 #endif /* __ASM_GENERIC_IRQ_H */
+
