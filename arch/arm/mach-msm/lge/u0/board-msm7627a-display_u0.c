@@ -140,11 +140,11 @@ static struct platform_device msm_fb_device = {
 
 #ifdef CONFIG_MSM_V4L2_VIDEO_OVERLAY_DEVICE
 static struct platform_device msm_v4l2_video_overlay_device = {
-		.name   = "msm_v4l2_overlay_pd",
-		.id     = 0,
-		.num_resources  = ARRAY_SIZE(msm_v4l2_video_overlay_resources),
-		.resource       = msm_v4l2_video_overlay_resources,
-	};
+		.name = "msm_v4l2_overlay_pd",
+		.id = 0,
+		.num_resources = ARRAY_SIZE(msm_v4l2_video_overlay_resources),
+		.resource = msm_v4l2_video_overlay_resources,
+};
 #endif
 
 static struct platform_device *msm_fb_devices[] __initdata = {

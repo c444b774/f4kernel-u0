@@ -38,6 +38,12 @@
 #include <linux/swap.h>
 #include <linux/rcupdate.h>
 #include <linux/notifier.h>
+#include <linux/mutex.h>
+#include <linux/delay.h>
+#include <linux/swap.h>
+#if defined (CONFIG_SWAP) && (defined (CONFIG_ZSWAP) || defined (CONFIG_ZRAM))
+#include <linux/fs.h>
+#endif
 
 static uint32_t lowmem_debug_level = 2;
 static int lowmem_adj[6] = {
@@ -106,9 +112,24 @@ static int lowmem_shrink(struct shrinker *s, struct shrink_control *sc)
 	int selected_tasksize = 0;
 	int selected_oom_score_adj;
 	int array_size = ARRAY_SIZE(lowmem_adj);
-	int other_free = global_page_state(NR_FREE_PAGES) - totalreserve_pages;
-	int other_file = global_page_state(NR_FILE_PAGES) -
+	int other_free;
+	int other_file;
+#if defined (CONFIG_SWAP) && (defined (CONFIG_ZSWAP) || defined (CONFIG_ZRAM))
+	struct sysinfo si;
+#endif
+
+#if defined (CONFIG_SWAP) && (defined (CONFIG_ZSWAP) || defined (CONFIG_ZRAM))
+	si_swapinfo(&si);
+	other_free = global_page_state(NR_FREE_PAGES);
+	other_file = global_page_state(NR_FILE_PAGES) -
+						global_page_state(NR_SHMEM) +
+						(si.freeswap >> 1) -
+						total_swapcache_pages;
+#else
+	other_free = global_page_state(NR_FREE_PAGES) - total reserve_pages;
+	other_file = global_page_state(NR_FILE_PAGES) -
 						global_page_state(NR_SHMEM);
+#endif
 
 	/* LGE_CHANGE : bohyun.jung@lge.com 
 	 * return if victim is already selected to kill. prevent nested lowmem_shrink() */

@@ -258,7 +258,7 @@ static struct msm_i2c_platform_data msm_gsbi1_qup_i2c_pdata = {
 #ifdef CONFIG_ARCH_MSM7X27A
 /* LGE_CHANGE : 2013/01/05 bohyun.jung@lge.com 
  * 				resize mdp_size to U0 ICS value. adsp_size is increased 1MB for JB. otherwise lcd does not come properly */
-#define MSM_RESERVE_MDP_SIZE       	    0x1600000 	// 0x2300000 
+#define MSM_RESERVE_MDP_SIZE       	    0x1400000 	// 0x2300000 
 #define MSM7x25A_MSM_RESERVE_MDP_SIZE       0x1400000
 
 #define MSM_RESERVE_ADSP_SIZE      	    0x00D00000

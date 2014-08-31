@@ -367,7 +367,7 @@ CFLAGS_MODULE   = $(ARM_FLAGS) -DMODULE
 AFLAGS_MODULE   = $(ARM_FLAGS) -DMODULE --strip-debug
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
 CFLAGS_KERNEL  = $(ARM_FLAGS)
-AFLAGS_KERNEL	=
+AFLAGS_KERNEL	= $(ARM_FLAGS)
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -389,7 +389,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
                    -funswitch-loops -fpredictive-commoning -fgcse-after-reload -fno-tree-vectorize \
                    -ftree-vectorize -funsafe-math-optimizations \
                    -fsched-spec-load -mvectorize-with-neon-quad \
-                   -fmodulo-sched \
+                   -fmodulo-sched -fmodulo-sched-allow-regmoves \
 		   -fno-delete-null-pointer-checks
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
@@ -583,7 +583,7 @@ all: vmlinux
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os
 else
-KBUILD_CFLAGS	+= -O2
+KBUILD_CFLAGS	+= -O3
 endif
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
