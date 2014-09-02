@@ -155,7 +155,7 @@ static void mdp4_dsi_cmd_do_blt(struct msm_fb_data_type *mfd, int enable)
 	int cndx = 0;
 	struct vsycn_ctrl *vctrl;
 	struct mdp4_overlay_pipe *pipe;
-	int need_wait;
+	int need_wait = 0;
 
 	vctrl = &vsync_ctrl_db[cndx];
 	pipe = vctrl->base_pipe;
@@ -259,7 +259,7 @@ int mdp4_dsi_cmd_pipe_commit(void)
 	struct mdp4_overlay_pipe *pipe;
 	struct mdp4_overlay_pipe *real_pipe;
 	unsigned long flags;
-	int need_dmap_wait = 0;
+	int need_dmap_wait;
 	int need_ov_wait = 0;
 	int cnt = 0;
 
