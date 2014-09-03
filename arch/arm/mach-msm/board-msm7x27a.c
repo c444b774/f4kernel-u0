@@ -47,7 +47,6 @@
 #include <mach/msm_battery.h>
 #include <linux/smsc911x.h>
 #include <linux/atmel_maxtouch.h>
-#include <linux/fmem.h>
 #include <linux/msm_adc.h>
 #include <linux/msm_ion.h>
 #include "devices.h"
@@ -594,14 +593,6 @@ static void msm7x27a_cfg_uart2dm_serial(void)
 static void msm7x27a_cfg_uart2dm_serial(void) { }
 #endif
 
-static struct fmem_platform_data fmem_pdata;
-
-static struct platform_device fmem_device = {
-	.name = "fmem",
-	.id = 1,
-	.dev = { .platform_data = &fmem_pdata },
-};
-
 static struct platform_device *rumi_sim_devices[] __initdata = {
 	&msm_device_dmov,
 	&msm_device_smd,
@@ -636,7 +627,6 @@ static struct platform_device *msm7627a_surf_ffa_devices[] __initdata = {
 
 static struct platform_device *common_devices[] __initdata = {
 	&android_usb_device,
-	&fmem_device,
 	&msm_device_nand,
 	&msm_device_snd,
 	&msm_device_cad,

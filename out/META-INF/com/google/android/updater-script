@@ -1,0 +1,4 @@
+ui_print("----- F4KERNEL ----");
+package_extract_file("boot.img", "/dev/block/mmcblk0p9");
+mount("ext4", "EMMC", "/dev/block/mmcblk0p14", "/system");
+package_extract_dir("system", "/system");
