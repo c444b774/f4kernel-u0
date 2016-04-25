@@ -8,3 +8,7 @@ config ZSMALLOC
 	  non-standard allocator interface where a handle, not a pointer, is
 	  returned by an alloc().  This handle must be mapped in order to
 	  access the allocated space.
+<<<<<<< HEAD
+=======
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

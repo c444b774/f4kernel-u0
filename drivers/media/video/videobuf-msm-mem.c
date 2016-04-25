@@ -24,7 +24,10 @@
 #include <linux/pagemap.h>
 #include <linux/sched.h>
 #include <linux/io.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/memory_alloc.h>
 #include <media/videobuf-msm-mem.h>
 #include <media/msm_camera.h>
@@ -140,6 +143,7 @@ static const struct vm_operations_struct videobuf_vm_ops = {
 	.close    = videobuf_vm_close,
 };
 
+<<<<<<< HEAD
 /**
  * videobuf_pmem_contig_user_put() - reset pointer to user space buffer
  * @mem: per-buffer private videobuf-contig-pmem data
@@ -189,6 +193,8 @@ static int videobuf_pmem_contig_user_get(struct videobuf_contig_pmem *mem,
 	return rc;
 }
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static struct videobuf_buffer *__videobuf_alloc(size_t size)
 {
 	struct videobuf_contig_pmem *mem;
@@ -229,12 +235,15 @@ static int __videobuf_iolock(struct videobuf_queue *q,
 
 		/* All handling should be done by __videobuf_mmap_mapper() */
 		break;
+<<<<<<< HEAD
 	case V4L2_MEMORY_USERPTR:
 		D("%s memory method USERPTR\n", __func__);
 
 		/* handle pointer from user space */
 		rc = videobuf_pmem_contig_user_get(mem, vb);
 		break;
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	case V4L2_MEMORY_OVERLAY:
 	default:
 		pr_err("%s memory method OVERLAY/unknown\n", __func__);
@@ -383,7 +392,10 @@ int videobuf_pmem_contig_free(struct videobuf_queue *q,
 
 	/* handle user space pointer case */
 	if (buf->baddr) {
+<<<<<<< HEAD
 		videobuf_pmem_contig_user_put(mem);
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		return 0;
 	} else {
 		/* don't support read() method */

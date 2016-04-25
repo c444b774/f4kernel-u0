@@ -11,3 +11,7 @@ extern struct swap_info_struct *swap_info[];
 extern int try_to_unuse(unsigned int, bool, unsigned long);
 
 #endif /* _LINUX_SWAPFILE_H */
+<<<<<<< HEAD
+=======
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

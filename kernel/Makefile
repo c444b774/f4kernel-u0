@@ -12,8 +12,11 @@ obj-y     = fork.o exec_domain.o panic.o printk.o \
 	    notifier.o ksysfs.o cred.o \
 	    async.o range.o groups.o
 
+<<<<<<< HEAD
 CFLAGS_cgroup.o += -Os
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 ifdef CONFIG_FUNCTION_TRACER
 # Do not trace debug files and internal ftrace files
 CFLAGS_REMOVE_lockdep.o = -pg
@@ -58,7 +61,11 @@ obj-$(CONFIG_BSD_PROCESS_ACCT) += acct.o
 obj-$(CONFIG_KEXEC) += kexec.o
 obj-$(CONFIG_BACKTRACE_SELF_TEST) += backtracetest.o
 obj-$(CONFIG_COMPAT) += compat.o
+<<<<<<< HEAD
 obj-$(CONFIG_CGROUPS) += cgroup.o 
+=======
+obj-$(CONFIG_CGROUPS) += cgroup.o
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_CGROUP_FREEZER) += cgroup_freezer.o
 obj-$(CONFIG_CPUSETS) += cpuset.o
 obj-$(CONFIG_UTS_NS) += utsname.o

@@ -1209,6 +1209,11 @@ retry:
 			if (!tried_min_extra_isize && s_min_extra_isize) {
 				tried_min_extra_isize++;
 				new_extra_isize = s_min_extra_isize;
+<<<<<<< HEAD
+=======
+				kfree(is); is = NULL;
+				kfree(bs); bs = NULL;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 				brelse(bh);
 				goto retry;
 			}

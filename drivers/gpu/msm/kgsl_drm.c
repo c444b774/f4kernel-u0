@@ -16,7 +16,10 @@
  */
 #include "drmP.h"
 #include "drm.h"
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 #include "kgsl.h"
 #include "kgsl_device.h"

@@ -109,6 +109,17 @@ struct request {
 	};
 
 	/*
+<<<<<<< HEAD
+=======
+	* two pointers are available for the IO schedulers, if they need
+	* more they have to dynamically allocate it.
+	*/
+	void *elevator_private;
+	void *elevator_private2;
+
+
+	/*
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	 * Three pointers are available for the IO schedulers, if they need
 	 * more they have to dynamically allocate it.  Flush requests are
 	 * never put on the IO scheduler. So let the flush fields share

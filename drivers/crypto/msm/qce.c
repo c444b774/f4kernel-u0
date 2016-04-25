@@ -479,6 +479,7 @@ static int count_sg(struct scatterlist *sg, int nbytes)
 	return i;
 }
 
+<<<<<<< HEAD
 static int dma_map_pmem_sg(struct buf_info *pmem, unsigned entries,
 						struct scatterlist *sg)
 {
@@ -492,6 +493,8 @@ static int dma_map_pmem_sg(struct buf_info *pmem, unsigned entries,
 	return 0;
 }
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static int _probe_ce_engine(struct qce_device *pce_dev)
 {
 	unsigned int val;
@@ -1058,6 +1061,7 @@ static int _ablk_cipher_complete(struct qce_device *pce_dev)
 	return 0;
 };
 
+<<<<<<< HEAD
 static int _ablk_cipher_use_pmem_complete(struct qce_device *pce_dev)
 {
 	struct ablkcipher_request *areq;
@@ -1103,6 +1107,8 @@ static int _ablk_cipher_use_pmem_complete(struct qce_device *pce_dev)
 
 	return 0;
 };
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 static int qce_split_and_insert_dm_desc(struct dmov_desc *pdesc,
 			unsigned int plen, unsigned int paddr, int *index)
@@ -1529,6 +1535,7 @@ static void _ablk_cipher_ce_out_call_back(struct msm_dmov_cmd *cmd_ptr,
 };
 
 
+<<<<<<< HEAD
 static void _ablk_cipher_ce_in_call_back_pmem(struct msm_dmov_cmd *cmd_ptr,
 		unsigned int result, struct msm_dmov_errdata *err)
 {
@@ -1576,6 +1583,8 @@ static void _ablk_cipher_ce_out_call_back_pmem(struct msm_dmov_cmd *cmd_ptr,
 	}
 };
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static int _setup_cmd_template(struct qce_device *pce_dev)
 {
 	dmov_sg *pcmd;
@@ -2157,6 +2166,7 @@ int qce_ablk_cipher_req(void *handle, struct qce_req *c_req)
 	/* cipher input       */
 	pce_dev->src_nents = count_sg(areq->src, areq->nbytes);
 
+<<<<<<< HEAD
 	if (c_req->use_pmem != 1)
 		dma_map_sg(pce_dev->pdev, areq->src, pce_dev->src_nents,
 			(areq->src == areq->dst) ? DMA_BIDIRECTIONAL :
@@ -2164,6 +2174,11 @@ int qce_ablk_cipher_req(void *handle, struct qce_req *c_req)
 	else
 		dma_map_pmem_sg(&c_req->pmem->src[0], pce_dev->src_nents,
 								areq->src);
+=======
+	qce_dma_map_sg(pce_dev->pdev, areq->src, pce_dev->src_nents,
+			(areq->src == areq->dst) ? DMA_BIDIRECTIONAL :
+								DMA_TO_DEVICE);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	if (_chain_sg_buffer_in(pce_dev, areq->src, areq->nbytes) < 0) {
 		rc = -ENOMEM;
@@ -2173,12 +2188,18 @@ int qce_ablk_cipher_req(void *handle, struct qce_req *c_req)
 	/* cipher output      */
 	if (areq->src != areq->dst) {
 		pce_dev->dst_nents = count_sg(areq->dst, areq->nbytes);
+<<<<<<< HEAD
 		if (c_req->use_pmem != 1)
 			dma_map_sg(pce_dev->pdev, areq->dst, pce_dev->dst_nents,
 							DMA_FROM_DEVICE);
 		else
 			dma_map_pmem_sg(&c_req->pmem->dst[0],
 					pce_dev->dst_nents, areq->dst);
+=======
+		qce_dma_map_sg(pce_dev->pdev, areq->dst,
+							DMA_FROM_DEVICE);
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	};
 	if (_chain_sg_buffer_out(pce_dev, areq->dst, areq->nbytes) < 0) {
 		rc = -ENOMEM;
@@ -2215,6 +2236,7 @@ int qce_ablk_cipher_req(void *handle, struct qce_req *c_req)
 	/* setup for callback, and issue command to adm */
 	pce_dev->areq = areq;
 	pce_dev->qce_cb = c_req->qce_cb;
+<<<<<<< HEAD
 	if (c_req->use_pmem == 1) {
 		pce_dev->chan_ce_in_cmd->complete_func =
 					_ablk_cipher_ce_in_call_back_pmem;
@@ -2226,11 +2248,18 @@ int qce_ablk_cipher_req(void *handle, struct qce_req *c_req)
 		pce_dev->chan_ce_out_cmd->complete_func =
 					_ablk_cipher_ce_out_call_back;
 	}
+=======
+	pce_dev->chan_ce_in_cmd->complete_func =
+					_ablk_cipher_ce_in_call_back;
+	pce_dev->chan_ce_out_cmd->complete_func =
+					_ablk_cipher_ce_out_call_back;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	rc = _qce_start_dma(pce_dev, true, true);
 
 	if (rc == 0)
 		return 0;
 bad:
+<<<<<<< HEAD
 	if (c_req->use_pmem != 1) {
 		if (pce_dev->dst_nents) {
 			dma_unmap_sg(pce_dev->pdev, areq->dst,
@@ -2243,6 +2272,18 @@ bad:
 						DMA_BIDIRECTIONAL :
 						DMA_TO_DEVICE);
 		}
+=======
+	if (pce_dev->dst_nents) {
+		qce_dma_unmap_sg(pce_dev->pdev, areq->dst,
+			pce_dev->dst_nents, DMA_FROM_DEVICE);
+	}
+	if (pce_dev->src_nents) {
+		qce_dma_unmap_sg(pce_dev->pdev, areq->src,
+			pce_dev->src_nents,
+			(areq->src == areq->dst) ?
+				DMA_BIDIRECTIONAL :
+				DMA_TO_DEVICE);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	}
 	return rc;
 }

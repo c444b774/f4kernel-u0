@@ -18,7 +18,10 @@
 #include <linux/uaccess.h>
 #include <linux/interrupt.h>
 #include <linux/workqueue.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/vmalloc.h>
 #include <linux/pm_runtime.h>
 #include <linux/genlock.h>
@@ -1475,11 +1478,18 @@ static int kgsl_get_phys_file(int fd, unsigned long *start, unsigned long *len,
 	dev_t rdev;
 	struct fb_info *info;
 
+<<<<<<< HEAD
 	*filep = NULL;
 #ifdef CONFIG_ANDROID_PMEM
 	if (!get_pmem_file(fd, start, vstart, len, filep))
 		return 0;
 #endif
+=======
+	*start = 0;
+	*vstart = 0;
+	*len = 0;
+	*filep = NULL;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	fbfile = fget(fd);
 	if (fbfile == NULL) {
@@ -1559,9 +1569,12 @@ static int kgsl_setup_phys_file(struct kgsl_mem_entry *entry,
 
 	return 0;
 err:
+<<<<<<< HEAD
 #ifdef CONFIG_ANDROID_PMEM
 	put_pmem_file(filep);
 #endif
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	return ret;
 }
 

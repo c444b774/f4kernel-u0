@@ -12,7 +12,10 @@
  * GNU General Public License for more details.
  */
 #include <linux/mman.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/types.h>
 #include <linux/platform_device.h>
 #include <linux/dma-mapping.h>
@@ -454,6 +457,7 @@ static int start_cipher_req(struct qcedev_control *podev)
 
 	/* start the command on the podev->active_command */
 	qcedev_areq = podev->active_command;
+<<<<<<< HEAD
 
 	qcedev_areq->cipher_req.cookie = qcedev_areq->handle;
 	creq.use_pmem = qcedev_areq->cipher_op_req.use_pmem;
@@ -461,6 +465,14 @@ static int start_cipher_req(struct qcedev_control *podev)
 		creq.pmem = &qcedev_areq->cipher_op_req.pmem;
 	else
 		creq.pmem = NULL;
+=======
+	qcedev_areq->cipher_req.cookie = qcedev_areq->handle;
+	if (qcedev_areq->cipher_op_req.use_pmem == QCEDEV_USE_PMEM) {
+		pr_err("%s: Use of PMEM is not supported\n", __func__);
+		goto unsupported;
+	}
+	creq.pmem = NULL;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	switch (qcedev_areq->cipher_op_req.alg) {
 	case QCEDEV_ALG_DES:
@@ -1263,6 +1275,7 @@ static int qcedev_hash_final(struct qcedev_async_req *areq,
 		return qcedev_hmac_final(areq, handle);
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_ANDROID_PMEM
 static int qcedev_pmem_ablk_cipher_max_xfer(struct qcedev_async_req *areq,
 						struct qcedev_handle *handle)
@@ -1480,6 +1493,8 @@ static int qcedev_pmem_ablk_cipher(struct qcedev_async_req *qcedev_areq,
 	return -EPERM;
 }
 #endif/*CONFIG_ANDROID_PMEM*/
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 static int qcedev_vbuf_ablk_cipher_max_xfer(struct qcedev_async_req *areq,
 				int *di, struct qcedev_handle *handle,
@@ -1742,6 +1757,13 @@ static int qcedev_vbuf_ablk_cipher(struct qcedev_async_req *areq,
 static int qcedev_check_cipher_params(struct qcedev_cipher_op_req *req,
 						struct qcedev_control *podev)
 {
+<<<<<<< HEAD
+=======
+	if (req->use_pmem) {
+		pr_err("%s: Use of PMEM is not supported\n", __func__);
+		goto error;
+	}
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	if ((req->entries == 0) || (req->data_len == 0))
 		goto error;
 	if ((req->alg >= QCEDEV_ALG_LAST) ||
@@ -1781,6 +1803,7 @@ static int qcedev_check_cipher_params(struct qcedev_cipher_op_req *req,
 	if (req->byteoffset) {
 		if (req->mode != QCEDEV_AES_MODE_CTR)
 			goto error;
+<<<<<<< HEAD
 		else { /* if using CTR mode make sure not using Pmem */
 			if (req->use_pmem)
 				goto error;
@@ -1791,6 +1814,8 @@ static int qcedev_check_cipher_params(struct qcedev_cipher_op_req *req,
 		if (!req->in_place_op)
 			goto error;
 	}
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	/* Ensure zer ivlen for ECB  mode  */
 	if (req->ivlen != 0) {
 		if ((req->mode == QCEDEV_AES_MODE_ECB) ||
@@ -1879,10 +1904,14 @@ static long qcedev_ioctl(struct file *file, unsigned cmd, unsigned long arg)
 				podev))
 			return -EINVAL;
 
+<<<<<<< HEAD
 		if (qcedev_areq.cipher_op_req.use_pmem)
 			err = qcedev_pmem_ablk_cipher(&qcedev_areq, handle);
 		else
 			err = qcedev_vbuf_ablk_cipher(&qcedev_areq, handle);
+=======
+		err = qcedev_vbuf_ablk_cipher(&qcedev_areq, handle);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		if (err)
 			return err;
 		if (__copy_to_user((void __user *)arg,

@@ -26,8 +26,11 @@
 #include <media/v4l2-ioctl.h>
 #include <media/v4l2-device.h>
 
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include "msm.h"
 
 #ifdef CONFIG_MSM_CAMERA_DEBUG
@@ -72,6 +75,7 @@
 
 static DEFINE_MUTEX(hlist_mut);
 
+<<<<<<< HEAD
 #ifdef CONFIG_ANDROID_PMEM
 static int check_pmem_info(struct msm_pmem_info *info, int len)
 {
@@ -92,6 +96,8 @@ static int check_pmem_info(struct msm_pmem_info *info, int len)
 }
 #endif
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static int check_overlap(struct hlist_head *ptype,
 				unsigned long paddr,
 				unsigned long len)
@@ -139,6 +145,7 @@ static int msm_pmem_table_add(struct hlist_head *ptype,
 	if (ion_map_iommu(client, region->handle, CAMERA_DOMAIN, GEN_POOL,
 				  SZ_4K, 0, &paddr, &len, UNCACHED, 0) < 0)
 		goto out2;
+<<<<<<< HEAD
 #elif CONFIG_ANDROID_PMEM
 	rc = get_pmem_file(info->fd, &paddr, &kvstart, &len, &file);
 	if (rc < 0) {
@@ -147,6 +154,8 @@ static int msm_pmem_table_add(struct hlist_head *ptype,
 		goto out1;
 	}
 	region->file = file;
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #else
 	paddr = 0;
 	file = NULL;
@@ -154,9 +163,12 @@ static int msm_pmem_table_add(struct hlist_head *ptype,
 #endif
 	if (!info->len)
 		info->len = len;
+<<<<<<< HEAD
 	rc = check_pmem_info(info, len);
 	if (rc < 0)
 		goto out3;
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	paddr += info->offset;
 	len = info->len;
 
@@ -186,8 +198,11 @@ out3:
 #ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
 out2:
 	ion_free(client, region->handle);
+<<<<<<< HEAD
 #elif CONFIG_ANDROID_PMEM
 	put_pmem_file(region->file);
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 out1:
 	kfree(region);
@@ -247,8 +262,11 @@ static int __msm_pmem_table_del(struct hlist_head *ptype,
 				ion_unmap_iommu(client, region->handle,
 					CAMERA_DOMAIN, GEN_POOL);
 				ion_free(client, region->handle);
+<<<<<<< HEAD
 #else
 				put_pmem_file(region->file);
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 				kfree(region);
 			}

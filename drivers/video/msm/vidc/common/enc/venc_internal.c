@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2010-2012, Code Aurora Forum. All rights reserved.
+=======
+/* Copyright (c) 2010-2013, Code Aurora Forum. All rights reserved.
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -25,7 +29,10 @@
 #include <linux/uaccess.h>
 #include <linux/wait.h>
 #include <linux/workqueue.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/clk.h>
 #include <mach/msm_subsystem_map.h>
 #include <media/msm/vidc_type.h>
@@ -41,8 +48,11 @@
 #endif
 
 #define ERR(x...) printk(KERN_ERR x)
+<<<<<<< HEAD
 static unsigned int vidc_mmu_subsystem[] = {
 	MSM_SUBSYSTEM_VIDEO};
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 
 u32 vid_enc_set_get_base_cfg(struct video_client_ctx *client_ctx,
@@ -1765,11 +1775,17 @@ u32 vid_enc_set_recon_buffers(struct video_client_ctx *client_ctx,
 		struct venc_recon_addr *venc_recon)
 {
 	u32 vcd_status = VCD_ERR_FAIL;
+<<<<<<< HEAD
 	u32 len, i, flags = 0;
 	struct file *file;
 	struct vcd_property_hdr vcd_property_hdr;
 	struct vcd_property_enc_recon_buffer *control = NULL;
 	struct msm_mapped_buffer *mapped_buffer = NULL;
+=======
+	u32 len, i;
+	struct vcd_property_hdr vcd_property_hdr;
+	struct vcd_property_enc_recon_buffer *control = NULL;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	int rc = -1;
 	unsigned long ionflag = 0;
 	unsigned long iova = 0;
@@ -1801,6 +1817,7 @@ u32 vid_enc_set_recon_buffers(struct video_client_ctx *client_ctx,
 	control->user_virtual_addr = venc_recon->pbuffer;
 
 	if (!vcd_get_ion_status()) {
+<<<<<<< HEAD
 		if (get_pmem_file(control->pmem_fd, (unsigned long *)
 			(&(control->physical_addr)), (unsigned long *)
 			(&control->kernel_virtual_addr),
@@ -1820,6 +1837,10 @@ u32 vid_enc_set_recon_buffers(struct video_client_ctx *client_ctx,
 			}
 			control->client_data = (void *) mapped_buffer;
 			control->dev_addr = (u8 *)mapped_buffer->iova[0];
+=======
+		pr_err("PMEM not available\n");
+		return false;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	} else {
 		client_ctx->recon_buffer_ion_handle[i] = ion_import_dma_buf(
 				client_ctx->user_ion_client, control->pmem_fd);

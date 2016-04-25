@@ -13,6 +13,7 @@
 #define LZ4HC_MEM_COMPRESS	(65538 * sizeof(unsigned char *))
 
 /*
+<<<<<<< HEAD
  * lz4_compressbound()
  * Provides the maximum size that LZ4 may output in a "worst case" scenario
  * (input data not compressible)
@@ -21,6 +22,13 @@ static inline size_t lz4_compressbound(size_t isize)
 {
 	return isize + (isize / 255) + 16;
 }
+=======
+ * LZ4_COMPRESSBOUND()
+ * Provides the maximum size that LZ4 may output in a "worst case" scenario
+ * (input data not compressible)
+ */
+#define LZ4_COMPRESSBOUND(isize) (isize + ((isize)/255) + 16)
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 /*
  * lz4_compress()
@@ -65,7 +73,11 @@ int lz4hc_compress(const unsigned char *src, size_t src_len,
  *	return  : Success if return 0
  *		  Error if return (< 0)
  *	note :  Destination buffer must be already allocated.
+<<<<<<< HEAD
  *		slightly faster than lz4_decompress_unknownoutputsize()
+=======
+ *		a bit faster than lz4_decompress_unknownoutputsize()
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
  */
 int lz4_decompress(const unsigned char *src, size_t *src_len,
 		unsigned char *dest, size_t actual_dest_len);
@@ -85,3 +97,7 @@ int lz4_decompress(const unsigned char *src, size_t *src_len,
 int lz4_decompress_unknownoutputsize(const unsigned char *src, size_t src_len,
 		unsigned char *dest, size_t *dest_len);
 #endif
+<<<<<<< HEAD
+=======
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

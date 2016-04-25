@@ -728,10 +728,17 @@ static struct logger_log VAR = { \
 	.size = SIZE, \
 };
 
+<<<<<<< HEAD
 DEFINE_LOGGER_DEVICE(log_main, LOGGER_LOG_MAIN, 256*1024)
 DEFINE_LOGGER_DEVICE(log_events, LOGGER_LOG_EVENTS, 256*1024)
 DEFINE_LOGGER_DEVICE(log_radio, LOGGER_LOG_RADIO, 256*1024)
 DEFINE_LOGGER_DEVICE(log_system, LOGGER_LOG_SYSTEM, 256*1024)
+=======
+DEFINE_LOGGER_DEVICE(log_main, LOGGER_LOG_MAIN, 32*1024)
+DEFINE_LOGGER_DEVICE(log_events, LOGGER_LOG_EVENTS, 16*1024)
+DEFINE_LOGGER_DEVICE(log_radio, LOGGER_LOG_RADIO, 16*1024)
+DEFINE_LOGGER_DEVICE(log_system, LOGGER_LOG_SYSTEM, 32*1024)
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 static struct logger_log *get_log_from_minor(int minor)
 {

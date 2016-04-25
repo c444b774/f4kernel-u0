@@ -24,7 +24,10 @@
 #include <linux/pagemap.h>
 #include <linux/sched.h>
 #include <linux/io.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/memory_alloc.h>
 #include <media/videobuf2-msm-mem.h>
 #include <media/msm_camera.h>
@@ -176,15 +179,25 @@ int videobuf2_pmem_contig_user_get(struct videobuf2_contig_pmem *mem,
 					uint32_t addr_offset, int path,
 					struct ion_client *client)
 {
+<<<<<<< HEAD
 	unsigned long len;
 	int rc = 0;
 #ifndef CONFIG_MSM_MULTIMEDIA_USE_ION
 	unsigned long kvstart;
+=======
+	int rc = 0;
+#ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
+	unsigned long len;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 	unsigned long paddr = 0;
 	if (mem->phyaddr != 0)
 		return 0;
+<<<<<<< HEAD
 #ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
+=======
+#if defined CONFIG_MSM_MULTIMEDIA_USE_ION
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	mem->ion_handle = ion_import_dma_buf(client, (int)mem->vaddr);
 	if (IS_ERR_OR_NULL(mem->ion_handle)) {
 		pr_err("%s ION import failed\n", __func__);
@@ -194,6 +207,7 @@ int videobuf2_pmem_contig_user_get(struct videobuf2_contig_pmem *mem,
 		SZ_4K, 0, (unsigned long *)&mem->phyaddr, &len, UNCACHED, 0);
 	if (rc < 0)
 		ion_free(client, mem->ion_handle);
+<<<<<<< HEAD
 #elif CONFIG_ANDROID_PMEM
 	rc = get_pmem_file((int)mem->vaddr, (unsigned long *)&mem->phyaddr,
 					&kvstart, &len, &mem->file);
@@ -205,6 +219,10 @@ int videobuf2_pmem_contig_user_get(struct videobuf2_contig_pmem *mem,
 #else
 	paddr = 0;
 	kvstart = 0;
+=======
+#else
+	paddr = 0;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 	if (offset)
 		mem->offset = *offset;
@@ -223,12 +241,19 @@ void videobuf2_pmem_contig_user_put(struct videobuf2_contig_pmem *mem,
 					struct ion_client *client)
 {
 	if (mem->is_userptr) {
+<<<<<<< HEAD
 #ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
 		ion_unmap_iommu(client, mem->ion_handle,
 				CAMERA_DOMAIN, GEN_POOL);
 		ion_free(client, mem->ion_handle);
 #elif CONFIG_ANDROID_PMEM
 		put_pmem_file(mem->file);
+=======
+#if defined CONFIG_MSM_MULTIMEDIA_USE_ION
+		ion_unmap_iommu(client, mem->ion_handle,
+				CAMERA_DOMAIN, GEN_POOL);
+		ion_free(client, mem->ion_handle);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 	}
 	mem->is_userptr = 0;

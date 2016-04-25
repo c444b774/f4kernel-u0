@@ -621,6 +621,10 @@ static long audio_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	}
 	case AUDIO_GET_CONFIG: {
 		struct msm_audio_config config;
+<<<<<<< HEAD
+=======
+		memset(&config, 0, sizeof(config));
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		config.buffer_size = BUFSZ;
 		config.buffer_count = 2;
 		config.sample_rate = audio->out_sample_rate;

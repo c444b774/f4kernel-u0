@@ -2,6 +2,10 @@
 #define _LINUX_ELEVATOR_H
 
 #include <linux/percpu.h>
+<<<<<<< HEAD
+=======
+#include <linux/hashtable.h>
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 #ifdef CONFIG_BLOCK
 
@@ -100,6 +104,11 @@ struct elevator_type
 	struct list_head list;
 };
 
+<<<<<<< HEAD
+=======
+#define ELV_HASH_BITS 6
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 /*
  * each queue has an elevator_queue associated with it
  */
@@ -109,8 +118,13 @@ struct elevator_queue
 	void *elevator_data;
 	struct kobject kobj;
 	struct mutex sysfs_lock;
+<<<<<<< HEAD
 	struct hlist_head *hash;
 	unsigned int registered:1;
+=======
+	unsigned int registered:1;
+	DECLARE_HASHTABLE(hash, ELV_HASH_BITS);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 };
 
 /*
@@ -197,6 +211,33 @@ enum {
 #define rq_end_sector(rq)	(blk_rq_pos(rq) + blk_rq_sectors(rq))
 #define rb_entry_rq(node)	rb_entry((node), struct request, rb_node)
 
+<<<<<<< HEAD
+=======
+
+/*
+ * io context count accounting
+ */
+#define elv_ioc_count_mod(name, __val)				\
+	do {							\
+		preempt_disable();				\
+		__get_cpu_var(name) += (__val);			\
+		preempt_enable();				\
+	} while (0)
+
+#define elv_ioc_count_inc(name)	elv_ioc_count_mod(name, 1)
+#define elv_ioc_count_dec(name)	elv_ioc_count_mod(name, -1)
+
+#define elv_ioc_count_read(name)				\
+({								\
+	unsigned long __val = 0;				\
+	int __cpu;						\
+	smp_wmb();						\
+	for_each_possible_cpu(__cpu)				\
+		__val += per_cpu(name, __cpu);			\
+	__val;							\
+})
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 /*
  * Hack to reuse the csd.list list_head as the fifo time holder while
  * the request is in the io scheduler. Saves an unsigned long in rq.

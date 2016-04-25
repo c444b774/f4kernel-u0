@@ -76,7 +76,12 @@
 #endif
 
 #define RESERVE_KERNEL_EBI1_SIZE	0x3A000
+<<<<<<< HEAD
 #define MSM_RESERVE_AUDIO_SIZE		0x1F4000
+=======
+#define MSM_RESERVE_AUDIO_SIZE		0xF0000
+#define BOOTLOADER_BASE_ADDR 0x10000
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 #ifdef CONFIG_ANDROID_RAM_CONSOLE
 #define MSM7X27_EBI1_CS0_SIZE	0xFD00000
@@ -256,11 +261,20 @@ static struct msm_i2c_platform_data msm_gsbi1_qup_i2c_pdata = {
 };
 
 #ifdef CONFIG_ARCH_MSM7X27A
+<<<<<<< HEAD
 /* JonasCardoso */
 #define MSM_RESERVE_MDP_SIZE       	    0x1400000 	// 0x2300000 
 #define MSM7x25A_MSM_RESERVE_MDP_SIZE       0x1400000
 
 #define MSM_RESERVE_ADSP_SIZE      	    0x1000000 //0x00D00000
+=======
+/* LGE_CHANGE : 2013/01/05 bohyun.jung@lge.com 
+ * 				resize mdp_size to U0 ICS value. adsp_size is increased 1MB for JB. otherwise lcd does not come properly */
+#define MSM_RESERVE_MDP_SIZE       	    0x1400000 	// 0x2300000 
+#define MSM7x25A_MSM_RESERVE_MDP_SIZE       0x1400000
+
+#define MSM_RESERVE_ADSP_SIZE      	    0x00D00000
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #define MSM7x25A_MSM_RESERVE_ADSP_SIZE      0xB91000
 #define CAMERA_ZSL_SIZE						(SZ_1M * 60)
 #endif
@@ -800,7 +814,11 @@ static void fix_sizes(void)
 		reserve_adsp_size 	= CAMERA_ZSL_SIZE;
 #ifdef CONFIG_ION_MSM
 		msm_ion_camera_size = reserve_adsp_size;
+<<<<<<< HEAD
 		msm_ion_audio_size 	= (MSM_RESERVE_AUDIO_SIZE + RESERVE_KERNEL_EBI1_SIZE);
+=======
+		msm_ion_audio_size 	= RESERVE_KERNEL_EBI1_SIZE;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		msm_ion_sf_size 	= reserve_mdp_size;
 #endif
 }
@@ -835,7 +853,11 @@ static struct ion_platform_data ion_pdata = {
 			.memory_type = ION_EBI_TYPE,
 			.extra_data = (void *)&co_ion_pdata,
 		},
+<<<<<<< HEAD
 		/* ION_AUDIO */
+=======
+		/* AUDIO HEAP 1 */
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		{
 			.id	= ION_AUDIO_HEAP_ID,
 			.type	= ION_HEAP_TYPE_CARVEOUT,
@@ -851,6 +873,18 @@ static struct ion_platform_data ion_pdata = {
 			.memory_type = ION_EBI_TYPE,
 			.extra_data = (void *)&co_ion_pdata,
 		},
+<<<<<<< HEAD
+=======
+		/* AUDIO HEAP 2 */
+		{
+			.id = ION_AUDIO_HEAP_BL_ID,
+			.type = ION_HEAP_TYPE_CARVEOUT,
+			.name = ION_AUDIO_BL_HEAP_NAME,
+			.memory_type = ION_EBI_TYPE,
+			.extra_data = (void *)&co_ion_pdata,
+			.base = BOOTLOADER_BASE_ADDR,
+		},
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 	}
 };
@@ -879,8 +913,14 @@ static void __init size_ion_devices(void)
 {
 #ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
 	ion_pdata.heaps[1].size = msm_ion_camera_size;
+<<<<<<< HEAD
 	ion_pdata.heaps[2].size = msm_ion_audio_size;
 	ion_pdata.heaps[3].size = msm_ion_sf_size;
+=======
+	ion_pdata.heaps[2].size = RESERVE_KERNEL_EBI1_SIZE;
+	ion_pdata.heaps[3].size = msm_ion_sf_size;
+	ion_pdata.heaps[4].size = msm_ion_audio_size;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 }
 
@@ -888,7 +928,11 @@ static void __init reserve_ion_memory(void)
 {
 #if defined(CONFIG_ION_MSM) && defined(CONFIG_MSM_MULTIMEDIA_USE_ION)
 	msm7x27a_reserve_table[MEMTYPE_EBI1].size += msm_ion_camera_size;
+<<<<<<< HEAD
 	msm7x27a_reserve_table[MEMTYPE_EBI1].size += msm_ion_audio_size;
+=======
+	msm7x27a_reserve_table[MEMTYPE_EBI1].size += RESERVE_KERNEL_EBI1_SIZE;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	msm7x27a_reserve_table[MEMTYPE_EBI1].size += msm_ion_sf_size;
 #endif
 }
@@ -914,6 +958,10 @@ static struct reserve_info msm7x27a_reserve_info __initdata = {
 static void __init msm7x27a_reserve(void)
 {
 	reserve_info = &msm7x27a_reserve_info;
+<<<<<<< HEAD
+=======
+	memblock_remove(BOOTLOADER_BASE_ADDR, msm_ion_audio_size);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	msm_reserve();
 }
 

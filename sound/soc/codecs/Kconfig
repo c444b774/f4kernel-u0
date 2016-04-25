@@ -448,6 +448,7 @@ config SND_SOC_TPA6130A2
 
 config SND_SOC_MSM_STUB
 	tristate
+<<<<<<< HEAD
 
 config SOUND_CONTROL_HAX_3_GPL
 	tristate "new wcd93xx sound control hax"
@@ -460,3 +461,5 @@ config SOUND_CONTROL_HAX_GPL
 	default y
 	help
 	  FauxSound WCD93xx chipset sound control hacks
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

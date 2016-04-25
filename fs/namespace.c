@@ -2152,9 +2152,15 @@ long do_mount(char *dev_name, char *dir_name, char *type_page,
 	if (retval)
 		goto dput_out;
 
+<<<<<<< HEAD
 	/* Default to noatime/nodiratime unless overriden */
 	if (!(flags & MS_RELATIME))
 		mnt_flags |= MNT_NOATIME;
+=======
+	/* Default to relatime unless overriden */
+	if (!(flags & MS_NOATIME))
+		mnt_flags |= MNT_RELATIME;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	/* Separate the per-mountpoint flags */
 	if (flags & MS_NOSUID)
@@ -2163,9 +2169,15 @@ long do_mount(char *dev_name, char *dir_name, char *type_page,
 		mnt_flags |= MNT_NODEV;
 	if (flags & MS_NOEXEC)
 		mnt_flags |= MNT_NOEXEC;
+<<<<<<< HEAD
 	/* if (flags & MS_NOATIME) */
 		mnt_flags |= MNT_NOATIME;
 	/* if (flags & MS_NODIRATIME) */
+=======
+	if (flags & MS_NOATIME)
+		mnt_flags |= MNT_NOATIME;
+	if (flags & MS_NODIRATIME)
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		mnt_flags |= MNT_NODIRATIME;
 	if (flags & MS_STRICTATIME)
 		mnt_flags &= ~(MNT_RELATIME | MNT_NOATIME);

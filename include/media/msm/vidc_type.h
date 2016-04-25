@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2010-2012, Code Aurora Forum. All rights reserved.
+=======
+/* Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -21,7 +25,10 @@
 #include <linux/list.h>
 #include <linux/time.h>
 #include <linux/dma-mapping.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 #define DEBUG   0
 #define VIDC_ENABLE_DBGFS

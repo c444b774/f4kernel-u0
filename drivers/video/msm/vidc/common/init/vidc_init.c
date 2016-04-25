@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2010-2012, Code Aurora Forum. All rights reserved.
+=======
+/* Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -24,7 +28,10 @@
 #include <linux/uaccess.h>
 #include <linux/wait.h>
 #include <linux/workqueue.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/clk.h>
 #include <linux/delay.h>
 #include <linux/debugfs.h>
@@ -49,7 +56,10 @@
 static struct vidc_dev *vidc_device_p;
 static dev_t vidc_dev_num;
 static struct class *vidc_class;
+<<<<<<< HEAD
 static unsigned int vidc_mmu_subsystem[] = {MSM_SUBSYSTEM_VIDEO};
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 static const struct file_operations vidc_fops = {
 	.owner = THIS_MODULE,
@@ -565,9 +575,14 @@ u32 vidc_insert_addr_table(struct video_client_ctx *client_ctx,
 	unsigned long len, phys_addr;
 	struct file *file = NULL;
 	u32 *num_of_buffers = NULL;
+<<<<<<< HEAD
 	u32 i, flags;
 	struct buf_addr_table *buf_addr_table;
 	struct msm_mapped_buffer *mapped_buffer = NULL;
+=======
+	u32 i;
+	struct buf_addr_table *buf_addr_table;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	struct ion_handle *buff_ion_handle = NULL;
 	unsigned long ionflag = 0;
 	unsigned long iova = 0;
@@ -609,6 +624,7 @@ u32 vidc_insert_addr_table(struct video_client_ctx *client_ctx,
 		goto bail_out_add;
 	} else {
 		if (!vcd_get_ion_status()) {
+<<<<<<< HEAD
 			if (get_pmem_file(pmem_fd, &phys_addr,
 					kernel_vaddr, &len, &file)) {
 				ERR("%s(): get_pmem_file failed\n", __func__);
@@ -629,6 +645,10 @@ u32 vidc_insert_addr_table(struct video_client_ctx *client_ctx,
 				mapped_buffer;
 			buf_addr_table[*num_of_buffers].dev_addr =
 				mapped_buffer->iova[0];
+=======
+			pr_err("PMEM not available\n");
+			return false;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		} else {
 			buff_ion_handle = ion_import_dma_buf(
 				client_ctx->user_ion_client, pmem_fd);

@@ -25,7 +25,10 @@
 #include <linux/uaccess.h>
 #include <linux/wait.h>
 #include <linux/workqueue.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/clk.h>
 #include <media/msm/vidc_type.h>
 #include <media/msm/vcd_api.h>

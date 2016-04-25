@@ -103,3 +103,7 @@ module_exit(lz4_mod_fini);
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("LZ4 Compression Algorithm");
+<<<<<<< HEAD
+=======
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

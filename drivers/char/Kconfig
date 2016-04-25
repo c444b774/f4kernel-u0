@@ -642,7 +642,11 @@ config TILE_SROM
 
 config MSM_ROTATOR
         tristate "MSM Offline Image Rotator Driver"
+<<<<<<< HEAD
         depends on (ARCH_MSM7X30 || ARCH_MSM8X60 || ARCH_MSM8960) && ANDROID_PMEM
+=======
+        depends on (ARCH_MSM7X30 || ARCH_MSM8X60 || ARCH_MSM8960)
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
         default y
         help
           This driver provides support for the image rotator HW block in the

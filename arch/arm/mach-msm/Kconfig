@@ -907,24 +907,39 @@ config PHYS_OFFSET
 	default "0x40200000" if ARCH_MSM8X60
 	default "0x10000000"
 
+<<<<<<< HEAD
 config KERNEL_PMEM_EBI_REGION
 	bool "Enable in-kernel PMEM region for EBI"
 	default y if ARCH_MSM8X60
 	depends on ANDROID_PMEM && (ARCH_MSM8X60 || ARCH_MSM8960 || ARCH_MSM8974)
+=======
+config KERNEL_MSM_CONTIG_MEM_REGION
+	bool "Enable in-kernel contiguous memory region"
+	default y if ARCH_MSM8X60
+	depends on ARCH_MSM8X60 || ARCH_MSM8960 || ARCH_MSM8974
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	help
 	   Enable the in-kernel PMEM allocator to use EBI memory.
 
 config KERNEL_PMEM_SMI_REGION
 	bool "Enable in-kernel PMEM region for SMI"
 	default y if ARCH_MSM8X60
+<<<<<<< HEAD
 	depends on ANDROID_PMEM && ((ARCH_QSD8X50 && !PMEM_GPU0) || (ARCH_MSM8X60 && !VCM))
+=======
+	depends on (ARCH_QSD8X50 && !PMEM_GPU0) || (ARCH_MSM8X60 && !VCM)
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	help
 	   Enable the in-kernel PMEM allocator to use SMI memory.
 
 config PMEM_GPU0
 	bool "Enable PMEM GPU0 region"
 	default y
+<<<<<<< HEAD
 	depends on ARCH_QSD8X50 && ANDROID_PMEM
+=======
+	depends on ARCH_QSD8X50
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	help
 	  Enable the PMEM GPU0 device on SMI Memory.
 
@@ -1564,13 +1579,18 @@ config MSM_CPU_FREQ_SET_MIN_MAX
 config MSM_CPU_FREQ_MAX
 	int "Max CPU Frequency"
 	depends on MSM_CPU_FREQ_SET_MIN_MAX
+<<<<<<< HEAD
 	default 800000
+=======
+	default 384000
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 config MSM_CPU_FREQ_MIN
 	int "Min CPU Frequency"
 	depends on MSM_CPU_FREQ_SET_MIN_MAX
 	default 245760
 
+<<<<<<< HEAD
 config MSM7X27A_OVERCLOCK_PERFORMANCE
 	bool "Enable SoC overclocking for MSM7x27A"
 	depends on MSM_CPU_FREQ_SET_MIN_MAX
@@ -1604,6 +1624,29 @@ config KGSL_GPU_BACONMAKER
   	help
     	  This enables 400Mhz max on the 3D core and 166Mhz max on the
     	  2D core.
+=======
+config MSM7X27A_OVERCLOCK
+	bool "Enable SoC overclocking for MSM7x27A"
+	depends on MSM_CPU_FREQ_SET_MIN_MAX
+        depends on MACH_MSM7X27A_U0
+	default n
+	help
+	  Enable support for non-standard msm7x27A acpuclock frequencies/voltages.
+
+config MSM7X27A_BACONMAKER
+	bool "Enable SoC overclocking to dangerous frequencies"
+	depends on MSM7X27A_OVERCLOCK
+	default n
+	help
+	  Enable support for dangerous msm7x27A acpuclock frequencies/voltages.
+
+config MSM7X27A_UNDERVOLT
+	bool "Enable stock freq undervolt for MSM7x27A"
+        depends on MACH_MSM7X27A_U0
+	default n
+	help
+	  Enable Undervolting of the default max freq
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 endif # CPU_FREQ_MSM
 
@@ -1629,8 +1672,11 @@ config MSM_AVS_HW
 
 config MSM_HW3D
 	tristate "MSM Hardware 3D Register Driver"
+<<<<<<< HEAD
 	depends on ANDROID_PMEM
 	default y
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	help
 	  Provides access to registers needed by the userspace OpenGL|ES
 	  library.
@@ -1638,7 +1684,10 @@ config MSM_HW3D
 config MSM_ADSP
 	depends on (ARCH_MSM7X01A || ARCH_MSM7X25 || ARCH_MSM7X27)
 	tristate "MSM ADSP driver"
+<<<<<<< HEAD
 	depends on ANDROID_PMEM
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	default y
 	help
 	  Provides access to registers needed by the userspace aDSP library.
@@ -1664,7 +1713,11 @@ endchoice
 
 config MSM7KV2_AUDIO
 	bool "MSM7K v2 audio"
+<<<<<<< HEAD
 	depends on (ARCH_MSM7X30 && ANDROID_PMEM)
+=======
+	depends on ARCH_MSM7X30
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	default y
 	help
 	  Enables QDSP5V2-based audio drivers for audio playbacks and
@@ -1680,14 +1733,22 @@ config MSM_ADSP_REPORT_EVENTS
 
 config MSM_QDSP6
 	tristate "QDSP6 support"
+<<<<<<< HEAD
 	depends on ARCH_QSD8X50 && ANDROID_PMEM
+=======
+	depends on ARCH_QSD8X50
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	default y
 	help
 	  Enable support for qdsp6. This provides audio and video functionality.
 
 config MSM8X60_AUDIO
 	tristate "MSM8X60 audio support"
+<<<<<<< HEAD
 	depends on ARCH_MSM8X60 && ANDROID_PMEM
+=======
+	depends on ARCH_MSM8X60
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	default y
 	help
 	  Enable support for qdsp6v2. This provides audio functionality.
@@ -1746,7 +1807,11 @@ config WIFI_MEM_PREALLOC
 
 config QSD_AUDIO
 	bool "QSD audio"
+<<<<<<< HEAD
 	depends on ARCH_MSM_SCORPION && MSM_DALRPC && ANDROID_PMEM && !MSM_SMP
+=======
+	depends on ARCH_MSM_SCORPION && MSM_DALRPC && !MSM_SMP
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	default y
 	help
 	  Provides PCM, MP3, and AAC audio playback.
@@ -2523,6 +2588,7 @@ config MSM_FIQ
 	  if apps is not responding and holding lock with irqs disabled.
 	  Modem will then generate an raise a FIQ on this line before sending
 	  SMSM reset
+<<<<<<< HEAD
 
 config FORCE_FAST_CHARGE
 	bool "Force AC charge mode at will"
@@ -2532,6 +2598,8 @@ config FORCE_FAST_CHARGE
 	  are detected as USB to charge as AC.
 
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 endif
 
 ### [LGE_BSP_S] jihyun2.jang@lge.com, 20130212 - RT8966A miniABB regulator

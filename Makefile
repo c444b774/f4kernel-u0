@@ -1,7 +1,11 @@
 VERSION = 3
 PATCHLEVEL = 4
 SUBLEVEL = 10
+<<<<<<< HEAD
 EXTRAVERSION =
+=======
+EXTRAVERSION = 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 NAME = Saber-toothed Squirrel
 
 # *DOCUMENTATION*
@@ -192,7 +196,11 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ \
 # Default value for CROSS_COMPILE is not to prefix executables
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 export KBUILD_BUILDHOST := $(SUBARCH)
+<<<<<<< HEAD
 ARCH		 = arm
+=======
+ARCH		?= $(SUBARCH)
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
 
 # Architecture as present in compile.h
@@ -243,6 +251,7 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 	  else if [ -x /bin/bash ]; then echo /bin/bash; \
 	  else echo sh; fi ; fi)
 
+<<<<<<< HEAD
 ifdef CONFIG_CCACHE
 HOSTCC       = ccache gcc
 HOSTCXX      = ccache g++
@@ -252,6 +261,12 @@ HOSTCXX      = g++
 endif
 HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer
 HOSTCXXFLAGS = -O2
+=======
+HOSTCC       = gcc
+HOSTCXX      = g++
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer
+HOSTCXXFLAGS = -O3
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 # Decide whether to build built-in, modular, or both.
 # Normally, just do built-in.
@@ -290,8 +305,13 @@ export KBUILD_CHECKSRC KBUILD_SRC KBUILD_EXTMOD
 # that echo $($(quiet)$(cmd)), we now have the possibility to set
 # $(quiet) to choose other forms of output instead, e.g.
 #
+<<<<<<< HEAD
 #         quiet_cmd_cc_o_c = Compiling $(RELDIR)/$@
 #         cmd_cc_o_c       = $(CC) $(c_flags) -c -o $@ $<
+=======
+quiet_cmd_cc_o_c = Compiling $(RELDIR)/$@
+cmd_cc_o_c       = $(CC) $(c_flags) -c -o $@ $<
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #
 # If $(quiet) is empty, the whole command will be printed.
 # If it is set to "quiet_", only the short version will be printed. 
@@ -335,11 +355,15 @@ include $(srctree)/scripts/Kbuild.include
 
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld
+<<<<<<< HEAD
 ifdef CONFIG_CCACHE
 REAL_CC		= ccache $(CROSS_COMPILE)gcc
 else
 REAL_CC		= $(CROSS_COMPILE)gcc
 endif
+=======
+REAL_CC		= $(CROSS_COMPILE)gcc
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 CPP		= $(CC) -E
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
@@ -372,6 +396,7 @@ CC		= $(srctree)/scripts/gcc-wrapper.py $(REAL_CC)
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
+<<<<<<< HEAD
 ifdef CONFIG_LINARO
 MODFLAGS	=  -mcpu=cortex-a5 -march=armv7-a -mfpu=neon-vfpv4 \
 		   -ffast-math -fsingle-precision-constant -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr \
@@ -384,6 +409,13 @@ AFLAGS_MODULE   = -DMODULE $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
 CFLAGS_KERNEL	= $(MODFLAGS)
 AFLAGS_KERNEL	= $(MODFLAGS)
+=======
+CFLAGS_MODULE   = $(ARM_FLAGS) -DMODULE
+AFLAGS_MODULE   = $(ARM_FLAGS) -DMODULE --strip-debug
+LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
+CFLAGS_KERNEL  = $(ARM_FLAGS)
+AFLAGS_KERNEL	= $(ARM_FLAGS)
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -398,8 +430,12 @@ KBUILD_CPPFLAGS := -D__KERNEL__
 
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
+<<<<<<< HEAD
 		   -Werror-implicit-function-declaration \
 		   -Wno-maybe-uninitialized \
+=======
+		   -Wimplicit-function-declaration \
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		   -Wno-format-security \
                    -marm -mfloat-abi=softfp -march=armv7-a \
                    -mfpu=neon -ffast-math -pipe \
@@ -407,7 +443,11 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
                    -ftree-vectorize -funsafe-math-optimizations \
                    -fsched-spec-load -mvectorize-with-neon-quad \
                    -fmodulo-sched -fmodulo-sched-allow-regmoves \
+<<<<<<< HEAD
 		   -fno-delete-null-pointer-checks $(MODFLAGS)
+=======
+		   -fno-delete-null-pointer-checks
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
@@ -599,6 +639,7 @@ all: vmlinux
 
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os
+<<<<<<< HEAD
 endif
 ifdef CONFIG_CC_OPTIMIZE_DEFAULT
 KBUILD_CFLAGS	+= -O2
@@ -612,6 +653,11 @@ endif
 
 # The workaround for all problems (but need to be fix)
 KBUILD_CFLAGS	+= $(call cc-disable-warning,maybe-uninitialized,)
+=======
+else
+KBUILD_CFLAGS	+= -O3
+endif
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
 
@@ -641,8 +687,11 @@ KBUILD_CFLAGS	+= -fomit-frame-pointer
 endif
 endif
 
+<<<<<<< HEAD
 KBUILD_CFLAGS   += $(call cc-option, -fno-var-tracking-assignments)
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 ifdef CONFIG_DEBUG_INFO
 KBUILD_CFLAGS	+= -g
 KBUILD_AFLAGS	+= -gdwarf-2

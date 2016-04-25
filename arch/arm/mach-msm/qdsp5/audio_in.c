@@ -4,7 +4,11 @@
  *
  * Copyright (C) 2008 Google, Inc.
  * Copyright (C) 2008 HTC Corporation
+<<<<<<< HEAD
  * Copyright (c) 2009, Code Aurora Forum. All rights reserved.
+=======
+ * Copyright (c) 2009, 2013, The Linux Foundation. All rights reserved.
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -571,6 +575,10 @@ static long audio_in_ioctl(struct file *file,
 
 	if (cmd == AUDIO_GET_STATS) {
 		struct msm_audio_stats stats;
+<<<<<<< HEAD
+=======
+		memset(&stats, 0, sizeof(stats));
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		stats.byte_count = atomic_read(&audio->in_bytes);
 		if (copy_to_user((void *) arg, &stats, sizeof(stats)))
 			return -EFAULT;

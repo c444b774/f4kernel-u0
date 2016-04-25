@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+
+Name: boot.img
+SHA1-Digest: Tkp17UcART8/3DmGuEsmfDBzXHI=
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: PFYzj86K1ifG4EJYhne/UAptw8o=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: CUREtgD9/ML00/5V+TLPvJnGQSE=
+

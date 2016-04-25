@@ -1275,6 +1275,7 @@ static int usb_resume_both(struct usb_device *udev, pm_message_t msg)
 }
 
 #ifdef CONFIG_USB_OTG
+<<<<<<< HEAD
 
 #define DO_UNBIND0
 #define DO_REBIND1
@@ -1321,6 +1322,8 @@ static void do_unbind_rebind(struct usb_device *udev, int action)
 }
 
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 void usb_hnp_polling_work(struct work_struct *work)
 {
 	int ret;

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2011, Code Aurora Forum. All rights reserved.
+=======
+/* Copyright (c) 2013 The Linux Foundation. All rights reserved.
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -311,6 +315,10 @@ static long audio_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
 	if (cmd == AUDIO_GET_STATS) {
 		struct msm_audio_stats stats;
+<<<<<<< HEAD
+=======
+		memset(&stats, 0, sizeof(stats));
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		stats.byte_count = atomic_read(&audio->out_bytes);
 		if (copy_to_user((void *) arg, &stats, sizeof(stats)))
 			return -EFAULT;

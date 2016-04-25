@@ -896,6 +896,7 @@ static struct resource kgsl_3d0_resources[] = {
 
 static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 	.pwrlevel = {
+<<<<<<< HEAD
 		/*#ifdef CONFIG_KGSL_GPU_BACONMAKER
 		{
 			.gpu_freq = 400000000,
@@ -907,6 +908,8 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 			.bus_freq = 210000000,
 		},
 		#else*/
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		/* LGE_CHANGE_S [peter.jung@lge.com]
 		    DoU Power consumption */
 		{
@@ -918,7 +921,10 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 			.gpu_freq = 320000000,
 			.bus_freq = 200000000,
 		},
+<<<<<<< HEAD
 		//#endif
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		{
 			.gpu_freq = 245760000,
 			.bus_freq = 200000000,
@@ -953,6 +959,7 @@ struct platform_device msm_kgsl_3d0 = {
 void __init msm7x25a_kgsl_3d0_init(void)
 {
 	if (cpu_is_msm7x25a() || cpu_is_msm7x25aa() || cpu_is_msm7x25ab()) {
+<<<<<<< HEAD
 		/*#ifdef CONFIG_KGSL_GPU_OVERCLOCK
 		kgsl_3d0_pdata.num_levels = 2;
 		kgsl_3d0_pdata.pwrlevel[0].gpu_freq = 166662500;
@@ -960,12 +967,17 @@ void __init msm7x25a_kgsl_3d0_init(void)
 		kgsl_3d0_pdata.pwrlevel[1].gpu_freq = 120000000;
 		kgsl_3d0_pdata.pwrlevel[1].bus_freq = 0;
 		#else*/
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		kgsl_3d0_pdata.num_levels = 2;
 		kgsl_3d0_pdata.pwrlevel[0].gpu_freq = 133330000;
 		kgsl_3d0_pdata.pwrlevel[0].bus_freq = 160000000;
 		kgsl_3d0_pdata.pwrlevel[1].gpu_freq = 96000000;
 		kgsl_3d0_pdata.pwrlevel[1].bus_freq = 0;
+<<<<<<< HEAD
 		//#endif
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	}
 }
 

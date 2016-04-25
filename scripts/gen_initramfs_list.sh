@@ -240,6 +240,7 @@ case "$arg" in
 		output_file="$1"
 		cpio_list="$(mktemp ${TMPDIR:-/tmp}/cpiolist.XXXXXX)"
 		output=${cpio_list}
+<<<<<<< HEAD
 		echo "$output_file" | grep -q "\.gz$" \
                 && [ -x "`which gzip 2> /dev/null`" ] \
                 && compr="gzip -n -9 -f"
@@ -258,6 +259,14 @@ case "$arg" in
 		echo "$output_file" | grep -q "\.lz4$" \
                 && [ -x "`which lz4 2> /dev/null`" ] \
                 && compr="lz4 -l -9 -f"
+=======
+		echo "$output_file" | grep -q "\.gz$" && compr="gzip -n -9 -f"
+		echo "$output_file" | grep -q "\.bz2$" && compr="bzip2 -9 -f"
+		echo "$output_file" | grep -q "\.lzma$" && compr="lzma -9 -f"
+		echo "$output_file" | grep -q "\.xz$" && \
+				compr="xz --check=crc32 --lzma2=dict=1MiB"
+		echo "$output_file" | grep -q "\.lzo$" && compr="lzop -9 -f"
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		echo "$output_file" | grep -q "\.cpio$" && compr="cat"
 		shift
 		;;

@@ -16,7 +16,10 @@
 #include <linux/wait.h>
 #include <linux/mutex.h>
 #include <linux/io.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/delay.h>
 #include <linux/dma-mapping.h>
 #include <linux/uaccess.h>
@@ -108,7 +111,10 @@ struct acdb_data {
 	audpp_cmd_cfg_object_params_eqalizer eq;
 	struct audrec_session_info session_info;
 	/*pmem info*/
+<<<<<<< HEAD
 	int pmem_fd;
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	unsigned long paddr;
 	unsigned long kvaddr;
 	unsigned long pmem_len;
@@ -1134,7 +1140,10 @@ static long audio_acdb_ioctl(struct file *file, unsigned int cmd,
 {
 	int rc = 0;
 	unsigned long flags = 0;
+<<<<<<< HEAD
 	struct msm_audio_pmem_info info;
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	MM_DBG("%s\n", __func__);
 
@@ -1154,6 +1163,7 @@ static long audio_acdb_ioctl(struct file *file, unsigned int cmd,
 			MM_ERR("AUDPP returned err =%d\n", rc);
 		spin_unlock_irqrestore(&acdb_data.dsp_lock, flags);
 		break;
+<<<<<<< HEAD
 	case AUDIO_REGISTER_PMEM:
 		MM_DBG("AUDIO_REGISTER_PMEM\n");
 		if (copy_from_user(&info, (void *) arg, sizeof(info))) {
@@ -1171,6 +1181,8 @@ static long audio_acdb_ioctl(struct file *file, unsigned int cmd,
 		if (acdb_data.pmem_fd)
 			put_pmem_file(acdb_data.file);
 		break;
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	case AUDIO_SET_ACDB_BLK:
 		MM_DBG("IOCTL AUDIO_SET_ACDB_BLK\n");
 		rc = acdb_set_calibration_blk(arg);

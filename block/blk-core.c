@@ -487,8 +487,12 @@ struct request_queue *blk_alloc_queue_node(gfp_t gfp_mask, int node_id)
 	if (q->id < 0)
 		goto fail_q;
 
+<<<<<<< HEAD
 	q->backing_dev_info.ra_pages =
 			(VM_MAX_READAHEAD * 1024) / PAGE_CACHE_SIZE;
+=======
+	q->backing_dev_info.ra_pages = max_readahead_pages;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	q->backing_dev_info.state = 0;
 	q->backing_dev_info.capabilities = BDI_CAP_MAP_COPY;
 	q->backing_dev_info.name = "block";

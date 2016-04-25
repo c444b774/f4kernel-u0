@@ -44,7 +44,11 @@ obj-$(CONFIG_FB_I810)           += video/i810/
 obj-$(CONFIG_FB_INTEL)          += video/intelfb/
 
 obj-$(CONFIG_PARPORT)		+= parport/
+<<<<<<< HEAD
 obj-y				+= base/ block/ misc/ mfd/ #nfc/
+=======
+obj-y				+= base/ block/ misc/ mfd/ nfc/
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_NUBUS)		+= nubus/
 obj-y				+= macintosh/
 obj-$(CONFIG_IDE)		+= ide/
@@ -127,7 +131,11 @@ obj-y				+= ieee802154/
 obj-y				+= clk/
 
 obj-$(CONFIG_HWSPINLOCK)	+= hwspinlock/
+<<<<<<< HEAD
 #obj-$(CONFIG_LGE_NFC)	        += nfc/
+=======
+obj-$(CONFIG_LGE_NFC)	        += nfc/
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_IOMMU_SUPPORT)	+= iommu/
 obj-$(CONFIG_REMOTEPROC)	+= remoteproc/
 obj-$(CONFIG_RPMSG)		+= rpmsg/

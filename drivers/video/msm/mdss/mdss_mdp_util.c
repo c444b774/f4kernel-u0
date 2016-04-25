@@ -12,7 +12,10 @@
  */
 #define pr_fmt(fmt)	"%s: " fmt, __func__
 
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/dma-mapping.h>
 #include <linux/errno.h>
 #include <linux/file.h>
@@ -285,7 +288,10 @@ int mdss_mdp_put_img(struct mdss_mdp_img_data *data)
 		return 0;
 	}
 	if (data->srcp_file) {
+<<<<<<< HEAD
 		put_pmem_file(data->srcp_file);
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		data->srcp_file = NULL;
 		return 0;
 	}
@@ -331,10 +337,13 @@ int mdss_mdp_get_img(struct ion_client *iclient, struct msmfb_data *img,
 			return PTR_ERR(data->srcp_ihdl);
 		ret = ion_phys(iclient, data->srcp_ihdl,
 			       start, (size_t *) len);
+<<<<<<< HEAD
 	} else {
 		unsigned long vstart;
 		ret = get_pmem_file(img->memory_id, start, &vstart, len,
 				    &data->srcp_file);
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	}
 
 	if (!ret && (img->offset < data->len)) {

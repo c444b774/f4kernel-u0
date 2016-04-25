@@ -2552,6 +2552,10 @@ static int check_modinfo(struct module *mod, struct load_info *info)
 		if (err)
 			return err;
 	} else if (!same_magic(modmagic, vermagic, info->index.vers)) {
+<<<<<<< HEAD
+=======
+	/* Fix up some wlan errors here */
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		if (!same_magic(modmagic, wlan_modmagic, info->index.vers)) {
 		printk(KERN_ERR "%s: version magic '%s' should be '%s'\n",
 		       mod->name, modmagic, vermagic);

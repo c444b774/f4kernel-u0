@@ -17,7 +17,10 @@
  */
 
 #include <linux/io.h>
+<<<<<<< HEAD
 #include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 #include <mach/qdsp5/qdsp5vdeccmdi.h>
 #include "adsp.h"

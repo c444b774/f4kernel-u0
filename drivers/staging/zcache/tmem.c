@@ -3,7 +3,11 @@
  *
  * Copyright (c) 2009-2011, Dan Magenheimer, Oracle Corp.
  *
+<<<<<<< HEAD
  * The primary purpose of Transcendent Memory ("tmem") is to map object-oriented
+=======
+ * The primary purpose of Transcedent Memory ("tmem") is to map object-oriented
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
  * "handles" (triples containing a pool id, and object id, and an index), to
  * pages in a page-accessible memory (PAM).  Tmem references the PAM pages via
  * an abstract "pampd" (PAM page-descriptor), which can be operated on by a
@@ -72,6 +76,7 @@ void tmem_register_pamops(struct tmem_pamops *m)
  * the hashbucket lock must be held.
  */
 
+<<<<<<< HEAD
 static struct tmem_obj
 *__tmem_obj_find(struct tmem_hashbucket*hb, struct tmem_oid *oidp,
 		 struct rb_node **parent, struct rb_node ***link)
@@ -85,10 +90,24 @@ static struct tmem_obj
 		_parent = *rbnode;
 		obj = rb_entry(*rbnode, struct tmem_obj,
 			       rb_tree_node);
+=======
+/* searches for object==oid in pool, returns locked object if found */
+static struct tmem_obj *tmem_obj_find(struct tmem_hashbucket *hb,
+					struct tmem_oid *oidp)
+{
+	struct rb_node *rbnode;
+	struct tmem_obj *obj;
+
+	rbnode = hb->obj_rb_root.rb_node;
+	while (rbnode) {
+		BUG_ON(RB_EMPTY_NODE(rbnode));
+		obj = rb_entry(rbnode, struct tmem_obj, rb_tree_node);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		switch (tmem_oid_compare(oidp, &obj->oid)) {
 		case 0: /* equal */
 			goto out;
 		case -1:
+<<<<<<< HEAD
 			rbnode = &(*rbnode)->rb_left;
 			break;
 		case 1:
@@ -102,11 +121,21 @@ static struct tmem_obj
 	if (link)
 		*link = rbnode;
 
+=======
+			rbnode = rbnode->rb_left;
+			break;
+		case 1:
+			rbnode = rbnode->rb_right;
+			break;
+		}
+	}
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	obj = NULL;
 out:
 	return obj;
 }
 
+<<<<<<< HEAD
 
 /* searches for object==oid in pool, returns locked object if found */
 static struct tmem_obj *tmem_obj_find(struct tmem_hashbucket *hb,
@@ -115,6 +144,8 @@ static struct tmem_obj *tmem_obj_find(struct tmem_hashbucket *hb,
 	return __tmem_obj_find(hb, oidp, NULL, NULL);
 }
 
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static void tmem_pampd_destroy_all_in_obj(struct tmem_obj *);
 
 /* free an object that has no more pampds in it */
@@ -147,7 +178,12 @@ static void tmem_obj_init(struct tmem_obj *obj, struct tmem_hashbucket *hb,
 					struct tmem_oid *oidp)
 {
 	struct rb_root *root = &hb->obj_rb_root;
+<<<<<<< HEAD
 	struct rb_node **new = NULL, *parent = NULL;
+=======
+	struct rb_node **new = &(root->rb_node), *parent = NULL;
+	struct tmem_obj *this;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	BUG_ON(pool == NULL);
 	atomic_inc(&pool->obj_count);
@@ -159,10 +195,29 @@ static void tmem_obj_init(struct tmem_obj *obj, struct tmem_hashbucket *hb,
 	obj->pampd_count = 0;
 	(*tmem_pamops.new_obj)(obj);
 	SET_SENTINEL(obj, OBJ);
+<<<<<<< HEAD
 
 	if (__tmem_obj_find(hb, oidp, &parent, &new))
 		BUG();
 
+=======
+	while (*new) {
+		BUG_ON(RB_EMPTY_NODE(*new));
+		this = rb_entry(*new, struct tmem_obj, rb_tree_node);
+		parent = *new;
+		switch (tmem_oid_compare(oidp, &this->oid)) {
+		case 0:
+			BUG(); /* already present; should never happen! */
+			break;
+		case -1:
+			new = &(*new)->rb_left;
+			break;
+		case 1:
+			new = &(*new)->rb_right;
+			break;
+		}
+	}
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	rb_link_node(&obj->rb_tree_node, parent, new);
 	rb_insert_color(&obj->rb_tree_node, root);
 }
@@ -771,3 +826,7 @@ void tmem_new_pool(struct tmem_pool *pool, uint32_t flags)
 	pool->persistent = persistent;
 	pool->shared = shared;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

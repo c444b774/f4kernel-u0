@@ -100,7 +100,11 @@ source "drivers/memstick/Kconfig"
 
 source "drivers/leds/Kconfig"
 
+<<<<<<< HEAD
 #source "drivers/nfc/Kconfig"
+=======
+source "drivers/nfc/Kconfig"
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 source "drivers/switch/Kconfig"
 
