@@ -204,9 +204,13 @@ static struct msm_panel_common_pdata mdp_pdata = {
 	.mdp_rev = MDP_REV_303,
 /* [LGSI_SP4_BSP_BEGIN] [kiran.jainapure@lge.com] - QCT supported continuation of display logo image from LK*/	
 	.cont_splash_enabled = 0x1,
+<<<<<<< HEAD
+/* [LGSI_SP4_BSP_END] [kiran.jainapure@lge.com] */	
+=======
 /* [LGSI_SP4_BSP_END] [kiran.jainapure@lge.com] */
  	.splash_screen_addr = 0x00,	
  	.splash_screen_size = 0x00, 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 };
 
 /* [LGSI_SP4_BSP_BEGIN] [kiran.jainapure@lge.com] */

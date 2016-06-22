@@ -5,6 +5,8 @@
 #include <linux/rcupdate.h>
 #include <linux/workqueue.h>
 
+<<<<<<< HEAD
+=======
 /*
  * This is the per-process anticipatory I/O scheduler state.
  */
@@ -31,6 +33,7 @@ struct as_io_context {
 	sector_t seek_mean;
 };
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 enum {
 	ICQ_IOPRIO_CHANGED	= 1 << 0,
 	ICQ_CGROUP_CHANGED	= 1 << 1,
@@ -139,7 +142,10 @@ struct io_context {
 	int nr_batch_requests;     /* Number of requests left in the batch */
 	unsigned long last_waited; /* Time last woken after wait for request */
 
+<<<<<<< HEAD
+=======
 	struct as_io_context *aic;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	struct radix_tree_root	icq_tree;
 	struct io_cq __rcu	*icq_hint;
 	struct hlist_head	icq_list;
@@ -165,8 +171,11 @@ struct task_struct;
 #ifdef CONFIG_BLOCK
 void put_io_context(struct io_context *ioc);
 void exit_io_context(struct task_struct *task);
+<<<<<<< HEAD
+=======
 struct io_context *take_io_context(gfp_t gfp_flags, int node);
 struct io_context *alloc_io_context(gfp_t gfp_flags, int node);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 struct io_context *get_task_io_context(struct task_struct *task,
 				       gfp_t gfp_flags, int node);
 void ioc_ioprio_changed(struct io_context *ioc, int ioprio);

@@ -177,9 +177,22 @@ config LZO_COMPRESS
 config LZO_DECOMPRESS
 	tristate
 
+<<<<<<< HEAD
+config LZ4_COMPRESS
+	tristate
+
+config LZ4HC_COMPRESS
+	tristate
+
 config LZ4_DECOMPRESS
 	tristate
 
+
+=======
+config LZ4_DECOMPRESS
+	tristate
+
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 source "lib/xz/Kconfig"
 
 #
@@ -204,6 +217,10 @@ config DECOMPRESS_LZO
 	select LZO_DECOMPRESS
 	tristate
 
+<<<<<<< HEAD
+config DECOMPRESS_LZ4
+	select LZ4_DECOMPRESS
+=======
 config LZ4_COMPRESS
 	tristate
 
@@ -212,6 +229,7 @@ config LZ4HC_COMPRESS
 
 config DECOMPRESS_LZ4
 	select LZO_DECOMPRESS
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	tristate
 
 #

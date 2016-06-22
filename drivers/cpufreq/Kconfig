@@ -241,6 +241,8 @@ config CPU_FREQ_GOV_INTERACTIVE
 
 	  If in doubt, say N.
 
+<<<<<<< HEAD
+=======
 config CPU_FREQ_GOV_INTERACTIVEX
 	tristate "'interactiveX' cpufreq policy governor"
 	help
@@ -258,6 +260,7 @@ config CPU_FREQ_GOV_INTERACTIVEX
 
 	  If in doubt, say N.
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 config CPU_FREQ_GOV_CONSERVATIVE
 	tristate "'conservative' cpufreq governor"
 	depends on CPU_FREQ
@@ -351,13 +354,26 @@ config CPU_FREQ_GOV_SMOOTHASS
 config CPU_FREQ_GOV_SMOOTHASS_BACONMAKER
 	bool "Enable baconmaker mode for smoothass cpufreq governor"
 	depends on CPU_FREQ
+<<<<<<< HEAD
+	 depends on CPU_FREQ_SMOOTHASS
+=======
 	depends on CPU_FREQ_SMOOTHASS
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	default n
 	help
 	  By default, smoothass allows you to only use 1008Mhz CPU freq (because this is the safe value), enabling this makes smoothass uses 1228Mhz (safe OC value).
 
 	  Say N to disable this.
 
+<<<<<<< HEAD
+config CPU_FREQ_VDD_LEVELS
+	bool "CPU Vdd levels sysfs interface"
+	depends on CPU_FREQ_STAT
+	depends on MACH_MSM7X25A_M4 || MACH_MSM7X25A_U0
+	default n
+	help
+	  CPU Vdd levels sysfs interface
+=======
 config CPU_FREQ_GOV_LULZACTIVEW
 	tristate "'lulzactivew' cpufreq governor"
 	depends on CPU_FREQ
@@ -421,6 +437,7 @@ config CPU_FREQ_GOV_SUPERBAD
 	depends on CPU_FREQ
 	help
 	  'superbad' - a "superbad" super smooth rendition of a highly optimized "smartass" governor!
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 menu "x86 CPU frequency scaling drivers"
 depends on X86

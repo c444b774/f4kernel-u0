@@ -4,6 +4,12 @@
 
 tda18271-objs := tda18271-maps.o tda18271-common.o tda18271-fe.o
 
+<<<<<<< HEAD
+CFLAGS_xc5000.o += -Os
+CFLAGS_xc4000.o += -Os
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_MEDIA_TUNER_XC2028) += tuner-xc2028.o
 obj-$(CONFIG_MEDIA_TUNER_SIMPLE) += tuner-simple.o
 # tuner-types will be merged into tuner-simple, in the future

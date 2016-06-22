@@ -86,7 +86,11 @@ source "drivers/staging/snappy/Kconfig"
 
 source "drivers/staging/zcache/Kconfig"
 
+<<<<<<< HEAD
+#source "drivers/staging/qcache/Kconfig"
+=======
 source "drivers/staging/qcache/Kconfig"
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 source "drivers/staging/zsmalloc/Kconfig"
 

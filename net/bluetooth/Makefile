@@ -2,6 +2,11 @@
 # Makefile for the Linux Bluetooth subsystem.
 #
 
+<<<<<<< HEAD
+CFLAGS_l2cap_core.o += -Os
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_BT)	+= bluetooth.o
 obj-$(CONFIG_BT_RFCOMM)	+= rfcomm/
 obj-$(CONFIG_BT_BNEP)	+= bnep/

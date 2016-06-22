@@ -4372,11 +4372,19 @@ static void tcp_sack_remove(struct tcp_sock *tp)
 		tp->rx_opt.num_sacks = 0;
 		return;
 	}
+<<<<<<< HEAD
+		BUG_ON(num_sacks > 4);
+	for (this_sack = 0; this_sack < num_sacks;) {
+		/* Check if the start of the sack is covered by RCV.NXT. */
+		if (!before(tp->rcv_nxt, sp->start_seq)) {
+			int i=0;
+=======
 
 	for (this_sack = 0; this_sack < num_sacks;) {
 		/* Check if the start of the sack is covered by RCV.NXT. */
 		if (!before(tp->rcv_nxt, sp->start_seq)) {
 			int i;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 			/* RCV.NXT must cover all the block! */
 			WARN_ON(before(tp->rcv_nxt, sp->end_seq));

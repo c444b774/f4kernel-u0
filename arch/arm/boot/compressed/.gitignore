@@ -5,6 +5,10 @@ piggy.gzip
 piggy.lzo
 piggy.lzma
 piggy.xzkern
+<<<<<<< HEAD
+piggy.lz4
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 vmlinux
 vmlinux.lds
 

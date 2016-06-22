@@ -191,8 +191,11 @@ struct msm_fb_data_type {
 	bool writeback_active_cnt;
 	int cont_splash_done;
 	int vsync_sysfs_created;
+<<<<<<< HEAD
+=======
        void *copy_splash_buf;
 	unsigned char *copy_splash_phys;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 };
 
 struct dentry *msm_fb_get_debugfs_root(void);

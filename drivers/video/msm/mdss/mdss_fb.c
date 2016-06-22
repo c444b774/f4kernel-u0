@@ -16,6 +16,10 @@
 
 #define pr_fmt(fmt)	"%s: " fmt, __func__
 
+<<<<<<< HEAD
+#include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/bootmem.h>
 #include <linux/console.h>
 #include <linux/debugfs.h>

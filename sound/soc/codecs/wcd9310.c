@@ -35,6 +35,13 @@
 #include <linux/gpio.h>
 #include "wcd9310.h"
 
+<<<<<<< HEAD
+#ifdef CONFIG_SOUND_CONTROL_HAX_GPL
+#include "sound_control_gpl.c"
+#endif
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static int cfilt_adjust_ms = 10;
 module_param(cfilt_adjust_ms, int, 0644);
 MODULE_PARM_DESC(cfilt_adjust_ms, "delay after adjusting cfilt voltage in ms");
@@ -7875,6 +7882,14 @@ static const struct file_operations codec_mbhc_debug_ops = {
 };
 #endif
 
+<<<<<<< HEAD
+#ifdef CONFIG_SOUND_CONTROL_HAX_GPL
+struct snd_kcontrol_new *gpl_faux_snd_controls_ptr =
+		(struct snd_kcontrol_new *)tabla_snd_controls;
+#endif
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static int tabla_codec_probe(struct snd_soc_codec *codec)
 {
 	struct wcd9xxx *control;

@@ -1,7 +1,11 @@
 #
 # Makefile for misc devices that really don't fit anywhere else.
 #
+<<<<<<< HEAD
+obj-$(CONFIG_GENERIC_BLN)       += bln.o
+=======
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_IBM_ASM)		+= ibmasm/
 obj-$(CONFIG_AD525X_DPOT)	+= ad525x_dpot.o
 obj-$(CONFIG_AD525X_DPOT_I2C)	+= ad525x_dpot-i2c.o
@@ -19,6 +23,10 @@ obj-$(CONFIG_PHANTOM)		+= phantom.o
 obj-$(CONFIG_SENSORS_BH1780)	+= bh1780gli.o
 obj-$(CONFIG_SENSORS_BH1770)	+= bh1770glc.o
 obj-$(CONFIG_SENSORS_APDS990X)	+= apds990x.o
+<<<<<<< HEAD
+obj-$(CONFIG_ANDROID_PMEM)	+= pmem.o
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_SGI_IOC4)		+= ioc4.o
 obj-$(CONFIG_ENCLOSURE_SERVICES) += enclosure.o
 obj-$(CONFIG_KGDB_TESTS)	+= kgdbts.o
@@ -81,3 +89,7 @@ obj-y += lge_tty_atcmd.o
 #LGE_CHANGE_S jungrock.oh@lge.com 2013-01-05 add lge_kcal
 obj-y += lge_kcal.o
 #LGE_CHANGE_E jungrock.oh@lge.com 2013-01-05 add lge_kcal 
+<<<<<<< HEAD
+obj-$(CONFIG_BLX) += blx.o
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

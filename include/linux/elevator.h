@@ -2,7 +2,10 @@
 #define _LINUX_ELEVATOR_H
 
 #include <linux/percpu.h>
+<<<<<<< HEAD
+=======
 #include <linux/hashtable.h>
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 #ifdef CONFIG_BLOCK
 
@@ -101,8 +104,11 @@ struct elevator_type
 	struct list_head list;
 };
 
+<<<<<<< HEAD
+=======
 #define ELV_HASH_BITS 6
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 /*
  * each queue has an elevator_queue associated with it
  */
@@ -112,8 +118,13 @@ struct elevator_queue
 	void *elevator_data;
 	struct kobject kobj;
 	struct mutex sysfs_lock;
+<<<<<<< HEAD
+	struct hlist_head *hash;
+	unsigned int registered:1;
+=======
 	unsigned int registered:1;
 	DECLARE_HASHTABLE(hash, ELV_HASH_BITS);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 };
 
 /*
@@ -200,6 +211,8 @@ enum {
 #define rq_end_sector(rq)	(blk_rq_pos(rq) + blk_rq_sectors(rq))
 #define rb_entry_rq(node)	rb_entry((node), struct request, rb_node)
 
+<<<<<<< HEAD
+=======
 
 /*
  * io context count accounting
@@ -224,6 +237,7 @@ enum {
 	__val;							\
 })
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 /*
  * Hack to reuse the csd.list list_head as the fifo time holder while
  * the request is in the io scheduler. Saves an unsigned long in rq.

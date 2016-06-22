@@ -1,5 +1,11 @@
 # Backlight & LCD drivers
 
+<<<<<<< HEAD
+CFLAGS_lm3530_bl.o += -Os
+CFLAGS_lm3530_bl_u0.o += -Os
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_LCD_CLASS_DEVICE)     += lcd.o
 obj-$(CONFIG_LCD_CORGI)		   += corgi_lcd.o
 obj-$(CONFIG_LCD_HP700)		   += jornada720_lcd.o

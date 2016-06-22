@@ -154,6 +154,12 @@ static struct kobj_type ktype_mem_entry = {
 
 static struct mem_entry_stats mem_stats[] = {
 	MEM_ENTRY_STAT(KGSL_MEM_ENTRY_KERNEL, kernel),
+<<<<<<< HEAD
+#ifdef CONFIG_ANDROID_PMEM
+	MEM_ENTRY_STAT(KGSL_MEM_ENTRY_PMEM, pmem),
+#endif
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #ifdef CONFIG_ASHMEM
 	MEM_ENTRY_STAT(KGSL_MEM_ENTRY_ASHMEM, ashmem),
 #endif

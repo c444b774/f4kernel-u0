@@ -23,4 +23,7 @@ config ZRAM_DEBUG
 	help
 	  This option adds additional debugging code to the compressed
 	  RAM block device driver.
+<<<<<<< HEAD
+=======
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

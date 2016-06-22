@@ -2629,7 +2629,11 @@ EXPORT_SYMBOL(kmem_cache_free);
  * take the list_lock.
  */
 static int slub_min_order;
+<<<<<<< HEAD
+static int slub_max_order;
+=======
 static int slub_max_order = PAGE_ALLOC_COSTLY_ORDER;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static int slub_min_objects;
 
 /*

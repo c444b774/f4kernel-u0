@@ -41,4 +41,7 @@ void zs_unmap_object(struct zs_pool *pool, unsigned long handle);
 u64 zs_get_total_size_bytes(struct zs_pool *pool);
 
 #endif
+<<<<<<< HEAD
+=======
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

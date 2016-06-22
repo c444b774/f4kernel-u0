@@ -20,6 +20,10 @@
 #include <linux/platform_device.h>
 #include <linux/slab.h>
 #include <linux/dma-mapping.h>
+<<<<<<< HEAD
+#include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <sound/core.h>
 #include <sound/soc.h>
 #include <sound/soc-dapm.h>

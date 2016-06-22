@@ -423,10 +423,17 @@ int lz4_compress(const unsigned char *src, size_t src_len,
 
 	if (src_len < LZ4_64KLIMIT)
 		out_len = lz4_compress64kctx(wrkmem, src, dst, src_len,
+<<<<<<< HEAD
+				lz4_compressbound(src_len));
+	else
+		out_len = lz4_compressctx(wrkmem, src, dst, src_len,
+				lz4_compressbound(src_len));
+=======
 				LZ4_COMPRESSBOUND(src_len));
 	else
 		out_len = lz4_compressctx(wrkmem, src, dst, src_len,
 				LZ4_COMPRESSBOUND(src_len));
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	if (out_len < 0)
 		goto exit;
@@ -437,8 +444,15 @@ int lz4_compress(const unsigned char *src, size_t src_len,
 exit:
 	return ret;
 }
+<<<<<<< HEAD
+EXPORT_SYMBOL(lz4_compress);
+
+MODULE_LICENSE("Dual BSD/GPL");
+MODULE_DESCRIPTION("LZ4 compressor");
+=======
 EXPORT_SYMBOL_GPL(lz4_compress);
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("LZ4 compressor");
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

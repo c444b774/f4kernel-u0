@@ -19,6 +19,10 @@
 #include <linux/init.h>
 #include <linux/version.h>
 #include <linux/platform_device.h>
+<<<<<<< HEAD
+#include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <linux/sched.h>
 #include <linux/kthread.h>
 #include <linux/time.h>

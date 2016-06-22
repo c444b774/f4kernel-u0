@@ -267,14 +267,21 @@ static struct msm_i2c_platform_data msm_gsbi1_qup_i2c_pdata = {
 };
 
 #ifdef CONFIG_ARCH_MSM7X27A
+<<<<<<< HEAD
+/* JonasCardoso */
+=======
 /*LGE_CHANGE_S[jyothishre.nk@lge.com]20121102:
  *Migrating QCT patch to remove pmem and fmem support*/
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #define MSM_RESERVE_MDP_SIZE       	    0x1500000 	// 0x2300000 
 #define MSM7x25A_MSM_RESERVE_MDP_SIZE       0x1500000
 
 #define MSM_RESERVE_ADSP_SIZE      	    0x1200000
 #define MSM7x25A_MSM_RESERVE_ADSP_SIZE      0xB91000
+<<<<<<< HEAD
+=======
 /*LGE_CHANGE_E[jyothishre.nk@lge.com]20121102*/
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #define CAMERA_ZSL_SIZE		(SZ_1M * 60)
 #endif
 

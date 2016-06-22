@@ -351,7 +351,11 @@ static int drr_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 {
 	struct drr_sched *q = qdisc_priv(sch);
 	struct drr_class *cl;
+<<<<<<< HEAD
+	int err=0;
+=======
 	int err;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	cl = drr_classify(skb, sch, &err);
 	if (cl == NULL) {

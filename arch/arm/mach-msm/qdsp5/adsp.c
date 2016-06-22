@@ -1474,9 +1474,13 @@ static int __init adsp_init(void)
 	if (msm_adsp_probe_work_queue == NULL)
 		return -ENOMEM;
 	msm_adsp_driver.driver.name = msm_adsp_driver_name;
+<<<<<<< HEAD
+	rc = platform_driver_register(&msm_adsp_driver);
+=======
 	preempt_disable();
 	rc = platform_driver_register(&msm_adsp_driver);
 	preempt_enable();
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	MM_INFO("%s -- %d\n", msm_adsp_driver_name, rc);
 	return rc;
 }

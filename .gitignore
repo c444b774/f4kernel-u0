@@ -29,6 +29,10 @@ modules.builtin
 *.bz2
 *.lzma
 *.xz
+<<<<<<< HEAD
+*.lz4
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 *.lzo
 *.patch
 *.gcno

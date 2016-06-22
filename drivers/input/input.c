@@ -352,8 +352,13 @@ void input_event(struct input_dev *dev,
 	if (is_event_supported(type, dev->evbit, EV_MAX)) {
 
 		spin_lock_irqsave(&dev->event_lock, flags);
+<<<<<<< HEAD
+		add_input_randomness(type, code, value);
+		input_handle_event(dev, type, code, value);
+=======
 		input_handle_event(dev, type, code, value);
 		add_input_randomness(type, code, value);
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		spin_unlock_irqrestore(&dev->event_lock, flags);
 	}
 }

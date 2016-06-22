@@ -25,6 +25,10 @@
 #include <media/v4l2-ioctl.h>
 #include <media/v4l2-device.h>
 
+<<<<<<< HEAD
+#include <linux/android_pmem.h>
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #include <media/msm_camera.h>
 #include <media/msm_isp.h>
 #include "msm.h"
@@ -161,6 +165,28 @@ static int msm_stats_deinit(struct msm_stats_bufq_ctrl *stats_ctrl)
 	return rc;
 }
 
+<<<<<<< HEAD
+#ifdef CONFIG_ANDROID_PMEM
+static int msm_stats_check_pmem_info(struct msm_stats_buf_info *info, int len)
+{
+	if (info->offset < len &&
+		info->offset + info->len <= len &&
+		info->planar0_off < len && info->planar1_off < len)
+		return 0;
+
+	pr_err("%s: check failed: off %d len %d y %d cbcr %d (total len %d)\n",
+		   __func__,
+		   info->offset,
+		   info->len,
+		   info->planar0_off,
+		   info->planar1_off,
+		   len);
+	return -EINVAL;
+}
+#endif
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 static int msm_stats_buf_prepare(struct msm_stats_bufq_ctrl *stats_ctrl,
 	struct msm_stats_buf_info *info, struct ion_client *client)
 {
@@ -205,6 +231,17 @@ static int msm_stats_buf_prepare(struct msm_stats_bufq_ctrl *stats_ctrl,
 		pr_err("%s: cannot map address", __func__);
 		goto out2;
 	}
+<<<<<<< HEAD
+#elif CONFIG_ANDROID_PMEM
+	rc = get_pmem_file(info->fd, &paddr, &kvstart, &len, &file);
+	if (rc < 0) {
+		pr_err("%s: get_pmem_file fd %d error %d\n",
+			   __func__, info->fd, rc);
+		goto out1;
+	}
+	stats_buf->file = file;
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #else
 	paddr = 0;
 	file = NULL;
@@ -212,6 +249,14 @@ static int msm_stats_buf_prepare(struct msm_stats_bufq_ctrl *stats_ctrl,
 #endif
 	if (!info->len)
 		info->len = len;
+<<<<<<< HEAD
+	rc = msm_stats_check_pmem_info(info, len);
+	if (rc < 0) {
+		pr_err("%s: msm_stats_check_pmem_info err = %d", __func__, rc);
+		goto out3;
+	}
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	paddr += info->offset;
 	len = info->len;
 	stats_buf->paddr = paddr;
@@ -222,12 +267,21 @@ static int msm_stats_buf_prepare(struct msm_stats_bufq_ctrl *stats_ctrl,
 	D("%s pmem_stats address is 0x%ld\n", __func__, paddr);
 	stats_buf->state = MSM_STATS_BUFFER_STATE_PREPARED;
 	return 0;
+<<<<<<< HEAD
+out3:
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
 	ion_unmap_iommu(client, stats_buf->handle, CAMERA_DOMAIN, GEN_POOL);
 #endif
 #ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
 out2:
 	ion_free(client, stats_buf->handle);
+<<<<<<< HEAD
+#elif CONFIG_ANDROID_PMEM
+	put_pmem_file(stats_buf->file);
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 out1:
 	return rc;
@@ -258,6 +312,11 @@ static int msm_stats_buf_unprepare(struct msm_stats_bufq_ctrl *stats_ctrl,
 	ion_unmap_iommu(client, stats_buf->handle,
 					CAMERA_DOMAIN, GEN_POOL);
 	ion_free(client, stats_buf->handle);
+<<<<<<< HEAD
+#else
+	put_pmem_file(stats_buf->file);
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #endif
 	if (stats_buf->state == MSM_STATS_BUFFER_STATE_QUEUED) {
 		/* buf queued need delete from list */

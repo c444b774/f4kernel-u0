@@ -844,7 +844,11 @@ static int qfq_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 	struct qfq_sched *q = qdisc_priv(sch);
 	struct qfq_group *grp;
 	struct qfq_class *cl;
+<<<<<<< HEAD
+	int err=0;
+=======
 	int err;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	u64 roundedS;
 	int s;
 

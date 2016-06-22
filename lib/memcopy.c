@@ -401,4 +401,7 @@ do0:
     ((op_t *) dstp)[3] = MERGE (a0, sh_1, a1, sh_2); 
 } 
  
+<<<<<<< HEAD
+=======
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870

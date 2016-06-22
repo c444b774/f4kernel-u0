@@ -35,6 +35,15 @@
 #include "mdp.h"
 #include "mdp4.h"
 
+<<<<<<< HEAD
+#ifdef CONFIG_TOUCHSCREEN_PREVENT_SLEEP
+#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+#include <linux/input/doubletap2wake.h>
+#endif
+#endif
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 u32 dsi_irq;
 u32 esc_byte_ratio;
 

@@ -39,10 +39,19 @@ EXPORT_SYMBOL_GPL(init_uts_ns);
 
 /* FIXED STRINGS! Don't touch! */
 const char linux_banner[] =
-	"Linux version " UTS_RELEASE " (" "f4uzan" "@"
+<<<<<<< HEAD
+	"Linux version " UTS_RELEASE " (" "JonasCardoso" "@"
+	"VectorKernel-RC1" ") (" LINUX_COMPILER ") " UTS_VERSION "\n";
+
+const char linux_proc_banner[] =
+	"%s version %s"
+	" (" "JonasCardoso" "@" "VectorKernel-RC1" ")"
+=======
+	"Linux version " UTS_RELEASE " (" LINUX_COMPILE_BY "@"
 	"OptimaTeam" ") (" LINUX_COMPILER ") " UTS_VERSION "\n";
 
 const char linux_proc_banner[] =
 	"%s version %s"
-	" (" "f4uzan" "@" "OptimaTeam" ")"
+	" (" LINUX_COMPILE_BY "@" "OptimaTeam" ")"
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	" (" LINUX_COMPILER ") %s\n";

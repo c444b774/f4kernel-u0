@@ -623,6 +623,8 @@ void add_disk(struct gendisk *disk)
 				   "bdi");
 	WARN_ON(retval);
 
+<<<<<<< HEAD
+=======
 	/*
 	 * Limit default readahead size for small devices.
 	 *        disk size    readahead size
@@ -643,6 +645,7 @@ void add_disk(struct gendisk *disk)
 		bdi->ra_pages = min(bdi->ra_pages, size);
 	}
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	disk_add_events(disk);
 }
 EXPORT_SYMBOL(add_disk);

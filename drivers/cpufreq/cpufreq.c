@@ -619,6 +619,69 @@ static ssize_t show_bios_limit(struct cpufreq_policy *policy, char *buf)
 	return sprintf(buf, "%u\n", policy->cpuinfo.max_freq);
 }
 
+<<<<<<< HEAD
+#ifdef CONFIG_CPU_FREQ_VDD_LEVELS
+
+extern ssize_t acpuclk_get_vdd_levels_str(char *buf);
+static ssize_t show_vdd_levels(struct cpufreq_policy *policy, char *buf)
+{
+	return acpuclk_get_vdd_levels_str(buf);
+}
+
+extern void acpuclk_set_vdd(unsigned acpu_khz, int vdd);
+static ssize_t store_vdd_levels(struct cpufreq_policy *policy, const char *buf, size_t count)
+{
+	int i = 0, j;
+	int pair[2] = { 0, 0 };
+	int sign = 0;
+
+	if (count < 1)
+		return 0;
+
+	if (buf[0] == '-') {
+		sign = -1;
+		i++;
+	}
+	else if (buf[0] == '+') {
+		sign = 1;
+		i++;
+	}
+
+	for (j = 0; i < count; i++) {
+		char c = buf[i];
+		if ((c >= '0') && (c <= '9')) {
+			pair[j] *= 10;
+			pair[j] += (c - '0');
+		}
+		else if ((c == ' ') || (c == '\t'))	{
+			if (pair[j] != 0) {
+				j++;
+				if ((sign != 0) || (j > 1))
+				break;
+			}
+		}
+		else
+			break;
+	}
+
+	if (sign != 0) {
+		if (pair[0] > 0)
+		acpuclk_set_vdd(0, sign * pair[0]);
+	}
+	else {
+		if ((pair[0] > 0) && (pair[1] > 0))
+			acpuclk_set_vdd((unsigned)pair[0], pair[1]);
+		else
+			return -EINVAL;
+	}
+	return count;
+}
+
+#endif //CONFIG_CPU_FREQ_VDD_LEVELS
+
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 cpufreq_freq_attr_ro_perm(cpuinfo_cur_freq, 0400);
 cpufreq_freq_attr_ro(cpuinfo_min_freq);
 cpufreq_freq_attr_ro(cpuinfo_max_freq);
@@ -634,6 +697,12 @@ cpufreq_freq_attr_rw(scaling_min_freq);
 cpufreq_freq_attr_rw(scaling_max_freq);
 cpufreq_freq_attr_rw(scaling_governor);
 cpufreq_freq_attr_rw(scaling_setspeed);
+<<<<<<< HEAD
+#ifdef CONFIG_CPU_FREQ_VDD_LEVELS
+cpufreq_freq_attr_rw(vdd_levels);
+#endif //CONFIG_CPU_FREQ_VDD_LEVELS
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 static struct attribute *default_attrs[] = {
 	&cpuinfo_min_freq.attr,
@@ -648,6 +717,12 @@ static struct attribute *default_attrs[] = {
 	&scaling_driver.attr,
 	&scaling_available_governors.attr,
 	&scaling_setspeed.attr,
+<<<<<<< HEAD
+	#ifdef CONFIG_CPU_FREQ_VDD_LEVELS
+	&vdd_levels.attr,
+	#endif //CONFIG_CPU_FREQ_VDD_LEVELS
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	NULL
 };
 
@@ -1724,8 +1799,12 @@ static int __cpufreq_set_policy(struct cpufreq_policy *data,
 	memcpy(&policy->cpuinfo, &data->cpuinfo,
 				sizeof(struct cpufreq_cpuinfo));
 
+<<<<<<< HEAD
+	if (policy->min > data->max || policy->max < data->min) {
+=======
 	if (policy->min > data->user_policy.max
 		|| policy->max < data->user_policy.min) {
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 		ret = -EINVAL;
 		goto error_out;
 	}

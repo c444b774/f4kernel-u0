@@ -3405,10 +3405,13 @@ static int mdp_probe(struct platform_device *pdev)
 	struct mipi_panel_info *mipi;
 #endif
 	static int contSplash_update_done;
+<<<<<<< HEAD
+=======
 	void *splash_virt_addr;
 	int cur_page;
 	unsigned long cur_addr;
 	struct splash_pages page_data;
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 	if ((pdev->id == 0) && (pdev->num_resources > 0)) {
 		mdp_init_pdev = pdev;
@@ -3483,6 +3486,8 @@ static int mdp_probe(struct platform_device *pdev)
 
 	if (mdp_pdata) {
 		if (mdp_pdata->cont_splash_enabled) {
+<<<<<<< HEAD
+=======
 			uint32 bpp = 3;
 			mdp_pipe_ctrl(MDP_CMD_BLOCK, MDP_BLOCK_POWER_ON, FALSE);
 			/*read panel wxh and calculate splash screen
@@ -3547,6 +3552,7 @@ static int mdp_probe(struct platform_device *pdev)
 				mfd->copy_splash_phys);
 			mdp_pipe_ctrl(MDP_CMD_BLOCK, MDP_BLOCK_POWER_OFF, FALSE);
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 			mfd->cont_splash_done = 0;
 			if (!contSplash_update_done) {
 				if (mfd->panel.type == MIPI_VIDEO_PANEL)
@@ -3985,6 +3991,8 @@ void mdp_footswitch_ctrl(boolean on)
 	mutex_unlock(&mdp_suspend_mutex);
 }
 
+<<<<<<< HEAD
+=======
 void mdp_free_splash_buffer(struct msm_fb_data_type *mfd)
 {
 	if (mfd->copy_splash_buf) {
@@ -3996,6 +4004,7 @@ void mdp_free_splash_buffer(struct msm_fb_data_type *mfd)
 	}
 }
 
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 #ifdef CONFIG_PM
 static void mdp_suspend_sub(void)
 {

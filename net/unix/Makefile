@@ -2,6 +2,11 @@
 # Makefile for the Linux unix domain socket layer.
 #
 
+<<<<<<< HEAD
+CFLAGS_af_unix.o += -Os
+
+=======
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 obj-$(CONFIG_UNIX)	+= unix.o
 
 unix-y			:= af_unix.o garbage.o

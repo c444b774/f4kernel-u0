@@ -896,7 +896,10 @@ static ssize_t audamrnb_in_read(struct file *file,
 	struct amrnb_encoded_meta_out meta_field;
 	struct audio_frame_nt *nt_frame;
 	MM_DBG("count = %d\n", count);
+<<<<<<< HEAD
+=======
 	memset(&meta_field, 0, sizeof(meta_field));
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 	mutex_lock(&audio->read_lock);
 	while (count > 0) {
 		rc = wait_event_interruptible(

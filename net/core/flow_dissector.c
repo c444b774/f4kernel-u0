@@ -35,9 +35,13 @@ again:
 		struct iphdr _iph;
 ip:
 		iph = skb_header_pointer(skb, nhoff, sizeof(_iph), &_iph);
+<<<<<<< HEAD
+		if (!iph)
+=======
 		
 		/* CVE-2013-4348 issue : make sure iph->ihl is not zero ... */
 		if (!iph || iph->ihl < 5)
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 			return false;
 
 		if (ip_is_fragment(iph))

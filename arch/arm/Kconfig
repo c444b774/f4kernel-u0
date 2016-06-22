@@ -1863,7 +1863,11 @@ config FIX_MOVABLE_ZONE
 
 config DONT_MAP_HOLE_AFTER_MEMBANK0
 	def_bool n
+<<<<<<< HEAD
+	#depends on SPARSEMEM
+=======
 	depends on SPARSEMEM
+>>>>>>> f47ec9ca2c9625cef21e456a80aa7cbbfec33870
 
 config ARCH_ENABLE_MEMORY_HOTPLUG
 	def_bool n
